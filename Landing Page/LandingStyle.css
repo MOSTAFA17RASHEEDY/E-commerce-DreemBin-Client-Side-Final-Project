@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Archivo", sans-serif;
+}
+/* NavBar style */
+.TopNav {
+  text-align: center;
+  padding: 14px;
+  background-color: #b19ddf;
+}
+.TopNav p {
+  font-size: 14px;
+}
+
+.MainNav {
+  background-color: #ffffe9;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 40px;
+}
+.MainNav > a {
+  margin-left: 10px;
+}
+.MainNav .RightPartOfNav {
+  display: flex;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+.RightPartOfNav .Lists {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  width: 450px;
+}
+.RightPartOfNav .Lists input {
+  border: 1px solid #9e9e9e;
+  border-radius: 5px;
+  background: none;
+  font-size: 14px;
+  padding: 10px;
+  margin-right: 10px;
+}
+.RightPartOfNav .Lists ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-right: 10px;
+}
+.RightPartOfNav .Lists ul li a {
+  text-decoration: none;
+  color: #000;
+}
+.RightPartOfNav .Buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: relative;
+}
+.RightPartOfNav .Buttons button {
+  background: none;
+  color: #000000;
+  border: none;
+  padding-inline: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.RightPartOfNav .Buttons :nth-child(1) {
+  margin-top: 5px;
+}
+.RightPartOfNav .Buttons hr {
+  position: absolute;
+  width: 56px;
+  top: 57px;
+}
+
+nav hr:nth-last-child(1) {
+  margin: auto;
+  width: 95%;
+}
