@@ -10,6 +10,7 @@
   box-sizing: border-box;
   font-family: "Archivo", sans-serif;
 }
+
 /* NavBar style */
 .TopNav {
   text-align: center;
@@ -159,7 +160,8 @@ nav hr:nth-last-child(1) {
   padding-inline: 40px;
   margin-top: 50px;
   gap: 20px;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
+  height: 500px;
   background-color: #ffffe9;
 }
 .StyleDivs1 {
@@ -172,7 +174,7 @@ nav hr:nth-last-child(1) {
   height: 190px;
   border-radius: 10px;
   margin-right: 40px;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
 }
 .StyleDivs1 .ImgContanier {
   border: 1px solid #9e9e9e;
@@ -215,6 +217,7 @@ nav hr:nth-last-child(1) {
   margin-right: 40px;
   left: 550px;
   bottom: -400px;
+  z-index: 1;
 }
 .StyleDivs2 .ImgContanier {
   width: 400px;
@@ -268,4 +271,88 @@ nav hr:nth-last-child(1) {
   margin-right: 10px;
 }
 
+/* Shop By Category Section style */
+.ShopByCategorySection {
+  background-color: #d2ffe0;
+  position: relative;
+  overflow: hidden;
+}
+.CategoryWave {
+  position: absolute;
+  top: -135px;
+}
 
+.ShopByCategorySection .Flower {
+  position: absolute;
+  left: -20px;
+  top: -225px;
+}
+.ShopByCategorySection .FlowerLeft {
+  position: absolute;
+  right: -34px;
+  top: -225px;
+}
+
+.ShopByCategorySection .ShopByCategoryContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-inline: 40px;
+  margin-bottom: 80px;
+}
+.ShopByCategoryContent h1 {
+  font-family: "RoseMadinaRegular", sans-serif;
+  font-size: 40px;
+  color: #171714;
+  letter-spacing: 2px;
+  margin-block: 50px;
+}
+.ShopByCategoryContent ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+.ShopByCategoryContent ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  text-align: center;
+  gap: 10px;
+  transition: all 0.9s ease-in-out;
+  cursor: pointer;
+}
+.ShopByCategoryContent ul li:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease-in-out;
+}
+.ShopByCategoryContent ul li .ImgContanier {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #ffffe9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ShopByCategoryContent ul li .ImgContanier img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Featured Products Section style */
+
+.FeaturedProductsSection {
+  position: relative;
+}
