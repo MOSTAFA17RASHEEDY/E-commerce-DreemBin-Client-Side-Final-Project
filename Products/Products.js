@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Watches": "Watches"
     };
 
-    fetch("./products.json")
+    fetch(window.location.origin + "/Shared/JSON/products.json") 
         .then(response => response.json())
         .then(data => {
             products = data;
