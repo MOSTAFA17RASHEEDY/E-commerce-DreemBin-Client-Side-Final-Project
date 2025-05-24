@@ -25,8 +25,11 @@
             <hr />
             <ul>
               <li><a href="#">Home</a></li>
-              <li><a href="#">Products</a></li>
+              <li>
+                <a href="../Products/All Products/AllProducts.html">Products</a>
+              </li>
               <li><a href="#">Contact Us</a></li>
+              <li><a href="../Login/Login.html">Log Out</a></li>
             </ul>
           </div>
           <hr />
@@ -58,10 +61,11 @@
             idea - creating a dream home that embodies both elegance and
             comfort.
           </p>
-          <button>Explore our collection</button>
+          <button><a href="../Products/All Products/AllProducts.html">Explore our collection</a></button>
         </div>
         <div class="StyleDivs">
-          <div class="StyleDivs1">
+          <a href="#">
+            <div class="StyleDivs1">
             <div class="ImgContanier">
               <img src="../Shared/Images/product-image-01.jpg" alt="" />
             </div>
@@ -72,6 +76,7 @@
               <label>30% <span>OFF</span></label>
             </span>
           </div>
+          </a>
           <div class="StyleDivs2">
             <span
               ><img src="../Shared/Icons/hero-rounded-vector.svg" width="500px"
@@ -113,8 +118,8 @@
         <img src="../Shared/Icons/category-vector-02.svg" class="FlowerLeft" />
         <div class="ShopByCategoryContent">
           <h1>Shop by Category</h1>
-          <ul>
-            <li>
+          <ul id="CategoryList">
+            <!-- <li>
               <div class="ImgContanier">
                 <img src="../Shared/Images/category-image-05.jpg" />
               </div>
@@ -149,7 +154,7 @@
                 <img src="../Shared/Images/category-image-05.jpg" />
               </div>
               <h3>Kitchen</h3>
-            </li>
+            </li> -->
           </ul>
         </div>
       </section>
@@ -157,8 +162,8 @@
         <img src="../Shared/Icons/category-bg-02.svg" width="100%" />
         <h1>Featured products</h1>
 
-        <ul>
-          <li>
+        <ul id="featured-products-list">
+      
             <div class="ProductContainer">
               <button>Shop Now</button>
               <div class="ProductImgContainer">
@@ -207,7 +212,7 @@
               <h3>Pillows flower printed</h3>
               <p>$ 42.30 USD</p>
             </div>
-          </li>
+          </li> -->
         </ul>
         <div class="ImgRoundedContanier">
           <img src="../Shared/Icons/project-rounded-vector.svg" alt="" />
@@ -216,5 +221,6 @@
     </main>
 
     <footer></footer>
+    <script src="./LandingPage.js"></script>
   </body>
 </html>
