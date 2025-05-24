@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="../ProductsStyle.css">
+    <script src="../Products.js" defer></script>
+</head>
+<body>
+    <div id="shop">
+        <header>
+            <h1>Shop</h1>
+        </header>
+        <nav>
+            <span>Shop by:</span>
+            <div class="category-buttons">
+                <button class="category-btn" data-category="all">All</button>
+                <button class="category-btn" data-category="gifts">Gifts</button>
+                <button class="category-btn" data-category="dining">Dining</button>
+                <button class="category-btn" data-category="serveware">Serveware</button>
+                <button class="category-btn" data-category="Furnishing">Furnishing</button>
+                <button class="category-btn" data-category="bags">Bags</button>
+                <button class="category-btn" data-category="Watches">Watches</button>
+            </div>
+        </nav>
+    </div>
+    <div class="shop-background-image">
+        <img src="../../Shared/Images/65aa19740c834b38b1764b65_hero-inner-image.svg" alt="background">
+    </div>
+    <main>
+        <section class="product-grid" id="productGrid"></section>
+        <div class="pagination">
+            <button id="prevBtn">Previous</button>
+            <p id="pageIndicator">1 / 1</p>
+            <button id="nextBtn">Next</button>
+        </div>
+    </main>
+</body>
+</html>
