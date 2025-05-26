@@ -389,7 +389,7 @@ nav hr:nth-last-child(1) {
   list-style: none;
   direction: rtl;
   display: flex;
-  /* justify-content: space-between; */
+  padding-bottom: 100px;
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
@@ -466,8 +466,302 @@ nav hr:nth-last-child(1) {
 }
 .ImgRoundedContanier {
   position: absolute;
-  bottom: 0px;
+  bottom: 100px;
   left: 170px;
   animation: rotateAround 9s linear infinite;
   transition: all 3s ease-in-out;
+}
+
+/* // About Section style */
+.AboutUsSection {
+  background-color: #ffffe9;
+  padding-bottom: 100px;
+}
+.FooterSvg {
+  width: 100%;
+}
+
+.AboutContainer {
+  position: relative;
+  background-color: #ffd9d1;
+}
+.divider {
+  border: none;
+  border-top: 2px dotted black; /* النقاط السوداء */
+  width: 80%; /* تقدرِ تغيري العرض */
+  margin-bottom: 150px;
+}
+.wiv1Contanier {
+  position: relative;
+  width: 100%;
+  height: 60px; /* ارتفاع كل صورة */
+  background-color: #ffd9d1;
+}
+.wiv1Contanier img {
+  position: absolute;
+  top: -80px;
+}
+.AboutHeader {
+  background-size: cover;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  color: #333;
+}
+
+.AboutHeader h1 {
+  font-family: "RoseMadinaRegular";
+  font-size: 2.5em;
+  margin-top: 0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.AboutHeader p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 75px;
+  text-align: center;
+}
+
+.AboutButton {
+  background-color: #b19ddf;
+  border: 1px solid black;
+  padding: 10px 20px;
+  color: black;
+  font-size: 1em;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 50px;
+}
+
+.AboutButton:hover {
+  background-color: #b4ddff;
+  color: #000000;
+}
+
+.wavy-image {
+  width: 100%; /* الصورة هتاخد كل عرض الـ wavy-background */
+  height: 200px; /* ارتفاع كل صورة */
+  object-fit: cover; /* عشان الصورة تتطابق مع الحجم بدون تشويه */
+  margin: 0; /* إزالة أي فراغات */
+}
+.image-section {
+  position: relative;
+}
+.imgContainer {
+  position: absolute;
+  width: 400px;
+  height: 600px; /* ارتفاع الصورة */
+  border-radius: 15px;
+  z-index: 9;
+  bottom: -500px;
+  left: 37%;
+  border: 1px solid #444444; /* حدود للصورة */
+}
+.imgContainer img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover; /* عشان الصورة تتطابق مع الحجم بدون تشويه */
+}
+
+.AboutVectorRight {
+  position: absolute;
+  right: 0;
+  bottom: 43px;
+  height: 300px; /* ارتفاع الصورة */
+}
+.AboutVectorLeft {
+  position: absolute;
+  left: 0;
+
+  bottom: 43px;
+  height: 300px; /* ارتفاع الصورة */
+}
+.stats {
+  position: relative;
+}
+
+.stat {
+  position: absolute;
+  top: -110px;
+  left: 5%;
+  z-index: 10;
+}
+.stat2 {
+  position: absolute;
+  top: -110px;
+  right: 5%;
+  z-index: 10;
+}
+.OuterSpan {
+  font-family: "RoseMadinaRegular";
+  position: absolute;
+  left: 90px;
+  top: 50px;
+  font-size: 25px;
+}
+.InnerSpan {
+  font-family: "RoseMadinaRegular";
+  position: absolute;
+  left: -36px;
+  top: 49px;
+  font-size: 20px;
+}
+.InnerSpan2 {
+  font-family: "RoseMadinaRegular";
+  position: absolute;
+  left: -41px;
+  top: 49px;
+  font-size: 18px;
+}
+.footerOfPage {
+  padding-top: 40%;
+}
+
+.footerOfPage h2 {
+  font-family: "RoseMadinaRegular";
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #171714;
+}
+
+.clients {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 60px; /* Matches the spacing on the website */
+  flex-wrap: wrap;
+}
+.client-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clients-item img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px; /* Space between logo and text */
+}
+.footerOfPage {
+  position: relative;
+  background-color: #ffffe9;
+
+  text-align: center;
+  color: #333;
+}
+.footerOfPage svg {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: -80px;
+}
+
+/* footer style */
+#Footer {
+  background-color: #d2ffe0;
+  display: grid;
+}
+.SvgContainer {
+  width: 100%;
+  position: relative;
+  height: 100px;
+  z-index: 1;
+}
+.SvgContainer img {
+  position: absolute;
+  top: -50px;
+  z-index: 1;
+}
+.FooterBody {
+  position: relative;
+}
+.FooterVector {
+  position: absolute;
+  left: -65px;
+  top: -140px;
+  z-index: 2;
+}
+.FooterVector2 {
+  position: absolute;
+  right: 0px;
+  top: -140px;
+  z-index: 2;
+}
+.row {
+  z-index: 3;
+}
+.FooterBody .Logo,
+.Title {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  z-index: 3;
+}
+.Title h1 {
+  font-family: "RoseMadinaRegular", sans-serif;
+  font-size: 1.5em;
+  color: #171714;
+  z-index: 3;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-left: 120px;
+  z-index: 3;
+}
+.grid-container .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.grid-container .column h1 {
+  font-family: "RoseMadinaRegular", sans-serif;
+  font-size: 1.2em;
+  color: #171714;
+  margin-bottom: 10px;
+}
+.grid-container .column ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 50px;
+  z-index: 3;
+}
+.grid-container .column ul a {
+  text-decoration: none;
+  color: #171714;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+.grid-container .column ul li {
+  margin-bottom: 10px;
+}
+
+.grid-container .column ul a:hover {
+  color: #b19ddf;
+  transition: all 0.3s ease-in-out;
+}
+.hrOfFooter {
+  width: 70%;
+  height: 1px;
+  background-color: #000000;
+  margin: 20px auto;
+  margin-bottom: 50px;
+}
+.EndOfFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 50px;
 }
