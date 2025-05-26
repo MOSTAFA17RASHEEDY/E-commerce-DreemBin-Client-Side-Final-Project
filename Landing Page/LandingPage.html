@@ -24,15 +24,17 @@
         </a>
         <div class="RightPartOfNav">
           <div class="Lists">
-            <input type="text" placeholder="Search" />
+            <input id="SearchInput" type="text" placeholder="Search" />
+            <span id="clearSearch" class="clearSearhClass" >&#10005;</span>
+            <div id="searchDropdown" class="search-dropdown"></div>
             <hr />
             <ul>
               <li><a href="#">Home</a></li>
               <li>
-                <a href="../Products/All Products/AllProducts.html">Products</a>
+                <a href="/Products/All Products/AllProducts.html">Products</a>
               </li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="../Login/Login.html">Log Out</a></li>
+              <li><a href="#Footer">Contact Us</a></li>
+              <li><a href="/Login/Login.html">Log Out</a></li>
             </ul>
           </div>
           <hr />
@@ -45,14 +47,28 @@
               />
             </button>
             <hr />
+
             <button>
               <img src="/Shared/Icons/cart.svg" alt="Cart Icon" height="25" />
+
               <span>0</span>
             </button>
           </div>
         </div>
       </div>
       <hr />
+
+
+          <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+    <div id="cartSidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <span>Your cart</span>
+        <span onclick="toggleCart()" class="close-btn">×</span>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer" id="cartFooter"></div>
+    </div>
     </nav>
     <main>
       <section class="ExploreSection" id="ExploreSection">
