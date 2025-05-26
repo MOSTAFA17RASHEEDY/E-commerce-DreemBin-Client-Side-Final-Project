@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "category": "bags",
+    "page": 1,
+    "image": "/Shared/Images/65ab5ad905de6751921e7a0c_product-image-12.jpg",
+    "title": "Metal clutch purse",
+    "price": 30.00,
+    "discountedPrice": 24.30,
+    "BestSell": true
+  },
+  {
+    "id": 2,
+    "category": "serveware",
+    "page": 1,
+    "image": "/Shared/Images/65ab5614d6e8611d02b30a4b_product-image-11.jpg",
+    "title": "Bento box",
+    "price": 72.30,
+    "discountedPrice": null,
+    "BestSell": false
+  },
+  {
+    "id": 3,
+    "category": "Furnishing",
+    "page": 1,
+    "image": "/Shared/Images/65ab54c2524f9e4d4b923791_product-image-10.jpg",
+    "title": "Floral mexican pillow",
+    "price": 64.30,
+    "discountedPrice": null,
+    "BestSell": true
+  },
+  {
+    "id": 4,
+    "category": "Watches",
+    "page": 1,
+    "image": "/Shared/Images/65ab53b33f6ffd7ffa7c7a3a_product-image-09.jpg",
+    "title": "Botanicals wall clock",
+    "price": 70.00,
+    "discountedPrice": 60.30,
+    "BestSell": false
+  },
+  {
+    "id": 5,
+    "category": "serveware",
+    "page": 1,
+    "image": "/Shared/Images/65ab52045faa95ea31319409_product-image-07.jpg",
+    "title": "Hanging lamp",
+    "price": 70.30,
+    "discountedPrice": null,
+    "BestSell": true
+  },
+  {
+    "id": 6,
+    "category": "gifts",
+    "page": 1,
+    "image": "/Shared/Images/65ab52045faa95ea31319409_product-image-07.jpg",
+    "title": "Ceramic oatmeal bowls",
+    "price": 56.30,
+    "discountedPrice": 50.00,
+    "BestSell": false
+  },
+  {
+    "id": 7,
+    "category": "Furnishing",
+    "page": 2,
+    "image": "/Shared/Images/65ab50e1becdc4e575a0614b_product-image-02.jpg",
+    "title": "Pillows flower Printed",
+    "price": 42.30,
+    "discountedPrice": null,
+    "BestSell": true
+  },
+  {
+    "id": 8,
+    "category": "dining",
+    "page": 2,
+    "image": "/Shared/Images/65ab508361c88173f6f53e5c_product-image-03 (1).jpg",
+    "title": "Ceramic plates bowls",
+    "price": 35.30,
+    "discountedPrice": null,
+    "BestSell": false
+  },
+  {
+    "id": 9,
+    "category": "bags",
+    "page": 2,
+    "image": "/Shared/Images/65ab50592f963c198a3a2a2a_product-image-04 (1).jpg",
+    "title": "Embroidered bag",
+    "price": 45.00,
+    "discountedPrice": null,
+    "BestSell": true
+  },
+  {
+    "id": 10,
+    "category": "gifts",
+    "page": 2,
+    "image": "/Shared/Images/65ab4ed0e3470a53f2456cc2_product-image-05.jpg",
+    "title": "Hand-painted teapot",
+    "price": 40.84,
+    "discountedPrice": 50.00,
+    "BestSell": false
+  },
+  {
+    "id": 11,
+    "category": "Watches",
+    "page": 2,
+    "image": "/Shared/Images/product-image-06.jpg",
+    "title": "Clock decoration",
+    "price": 39.49,
+    "discountedPrice": null,
+    "BestSell": false
+  },
+  {
+    "id": 12,
+    "category": "dining",
+    "page": 2,
+    "image": "/Shared/Images/65ab50e1becdc4e575a0614b_product-image-02.jpg",
+    "title": "Serving tray",
+    "price": 25.00,
+    "discountedPrice": null,
+    "BestSell": false
+  }
+]

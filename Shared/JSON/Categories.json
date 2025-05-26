@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Gifts",
+    "description": "Find the perfect gift for any occasion.",
+    "image": "../Shared/Images/category-gifts.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Dining",
+    "description": "Elegant and functional dining essentials.",
+    "image": "../Shared/Images/category-dining.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Serveware",
+    "description": "Serve in style with our premium serveware collection.",
+    "image": "../Shared/Images/category-serveware.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Furnishing",
+    "description": "Decorate your space with our unique furnishings.",
+    "image": "../Shared/Images/category-furnishing.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Bags",
+    "description": "Discover our stylish and practical bags.",
+    "image": "../Shared/Images/category-bags.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Watches",
+    "description": "Timeless watches for every style.",
+    "image": "../Shared/Images/category-watches.jpg"
+  }
+]
