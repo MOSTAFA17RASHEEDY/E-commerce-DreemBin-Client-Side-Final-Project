@@ -29,8 +29,9 @@ fetch("../Shared/JSON/products.json")
     console.error("Error loading products:", error);
   });
 
-// Fetch categories (no change needed)
-fetch("../Shared/JSON/Categories.json")
+
+fetch("/Shared/JSON/Categories.json")
+
   .then((response) => response.json())
   .then((categories) => {
     const ul = document.getElementById("CategoryList");

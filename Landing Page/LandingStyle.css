@@ -12,7 +12,9 @@
   font-family: "Archivo", sans-serif;
   transition: all 0.3s ease-in-out;
 }
-
+body{
+background-color: #ffffe9;
+}
 /* NavBar style */
 
 .TopNav {
@@ -25,7 +27,7 @@
 }
 
 .MainNav {
-  background-color: #ffffe9;
+ transition: background-color;
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
