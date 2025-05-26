@@ -21,7 +21,6 @@
         </a>
         <div class="RightPartOfNav">
           <div class="Lists">
-            <!-- Place this just after your search input -->
             <input id="SearchInput" type="text" placeholder="Search" />
             <span id="clearSearch" class="clearSearhClass" >&#10005;</span>
             <div id="searchDropdown" class="search-dropdown"></div>
@@ -45,7 +44,7 @@
               />
             </button>
             <hr />
-            <button>
+            <button onclick="toggleCart()">
               <img src="../Shared/Icons/cart.svg" alt="Cart Icon" height="25" />
               <span>0</span>
             </button>
@@ -53,6 +52,18 @@
         </div>
       </div>
       <hr />
+
+
+          <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+    <div id="cartSidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <span>Your cart</span>
+        <span onclick="toggleCart()" class="close-btn">×</span>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer" id="cartFooter"></div>
+    </div>
     </nav>
     <main>
       <section class="ExploreSection" id="ExploreSection">
