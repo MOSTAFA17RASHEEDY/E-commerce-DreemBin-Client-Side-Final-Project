@@ -1,7 +1,13 @@
+@font-face {
+  font-family: "RoseMadina";
+  src: url("../Shared/Fonts/Rose Madina Regular.ttf") format("truetype");
+}
+
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "RoseMadina", sans-serif;
   background: #f8f8f8;
+  font-size: 13px;
 }
 
 .product {
@@ -103,7 +109,7 @@ body {
 }
 
 .cart-footer {
-  margin-top: 40%;
+  margin-top: 30%;
   font-size: 18px;
   text-align: center;
 }
@@ -111,7 +117,7 @@ body {
 .checkout-btn {
   width: 100%;
   padding: 12px;
-  background: #9dd3fc;
+  background: #b19ddf;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -135,14 +141,9 @@ body {
 .cart-footer button {
   border: 1px solid;
   border-radius: 5px;
-  background-color: burlywood;
+  background-color: b19ddf;
   cursor: pointer;
   color: black;
   justify-content: center;
   padding: 15px 20px;
-}
-
-.cart-footer button:hover {
-  background-color: rgb(219, 140, 36);
-  transition: background-color 0.3s ease;
 }
