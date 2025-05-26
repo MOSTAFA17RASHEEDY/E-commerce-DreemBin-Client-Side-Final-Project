@@ -12,22 +12,22 @@
   font-family: "Archivo", sans-serif;
   transition: all 0.3s ease-in-out;
 }
-body{
-background-color: #ffffe9;
+body {
+  background-color: #ffffe9;
 }
 /* NavBar style */
 
-.TopNav {
+#TopNav {
   text-align: center;
   padding: 14px;
   background-color: #b19ddf;
 }
-.TopNav p {
+#TopNav p {
   font-size: 14px;
 }
 
 .MainNav {
- transition: background-color;
+  transition: background-color;
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
@@ -162,7 +162,10 @@ background-color: #ffffe9;
   text-align: center;
   padding-top: 3px;
 }
-
+.NavHr {
+  width: 90%;
+  margin: auto;
+}
 /* cart style */
 
 .overlay {
@@ -942,4 +945,27 @@ background-color: #ffffe9;
   align-items: center;
 
   margin-bottom: 50px;
+}
+@keyframes vibrate {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.vibrate {
+  animation: vibrate 0.4s;
 }

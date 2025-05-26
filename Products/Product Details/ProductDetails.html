@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ceramic Oatmeal Bowls</title>
-    <link rel="stylesheet" href="/Products/ProductsStyle.css">
-      <link rel="stylesheet" href="/Landing Page/LandingStyle.css">
-    <script src="../ProductDetails.js" defer></script>
-</head>
-<body>
-    <nav>
-      <div class="TopNav">
+    <link rel="stylesheet" href="/Products/ProductsStyle.css" />
+    <link rel="stylesheet" href="/Landing Page/LandingStyle.css" />
+  </head>
+  <body>
+    <nav id="TopNavBar" style="background-color: #ffffe9">
+      <div id="TopNav">
         <p>Exclusive Offer: Get 25% off Your First Purchase</p>
       </div>
       <div class="MainNav">
@@ -23,12 +22,17 @@
         </a>
         <div class="RightPartOfNav">
           <div class="Lists">
-            <input type="text" placeholder="Search" />
+            <input id="SearchInput" type="text" placeholder="Search" />
+            <span id="clearSearch" class="clearSearhClass">&#10005;</span>
+            <div id="searchDropdown" class="search-dropdown"></div>
             <hr />
             <ul>
               <li><a href="/Landing Page/LandingPage.html">Home</a></li>
-              <li><a href="/Products/All Products/AllProducts.html">Products</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li>
+                <a href="/Products/All Products/AllProducts.html">Products</a>
+              </li>
+              <li><a href="#Footer">Contact Us</a></li>
+              <li><a href="/Login/Login.html">Log Out</a></li>
             </ul>
           </div>
           <hr />
@@ -41,36 +45,62 @@
               />
             </button>
             <hr />
-            <button>
+
+            <button onclick="toggleCart()">
               <img src="/Shared/Icons/cart.svg" alt="Cart Icon" height="25" />
-              <span>0</span>
+
+              <span id="cartCount">0</span>
             </button>
           </div>
         </div>
       </div>
-      <hr />
-    </nav >
- <main class="container">
-        <div class="product-detail">
+      <hr class="NavHr" />
+
+      <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+      <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+          <span>Your cart</span>
+          <span onclick="toggleCart()" class="close-btn">×</span>
         </div>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-footer" id="cartFooter"></div>
+      </div>
+    </nav>
+    <main class="container">
+      <div class="product-detail"></div>
     </main>
     <footer class="footer-icons">
-        <div class="icon-box">
-            <img src="/Shared/Icons/65b234202f7c7e43072878d6_feature-icon-04.svg" alt="">
-            <p>Quality materials</p>
-        </div>
-        <div class="icon-box">
-            <img src="/Shared/Icons/65b233a562a42c23f1024dba_feature-icon-01.svg" alt="">
-            <p>Free shipping</p>
-        </div>
-        <div class="icon-box">
-            <img src="/Shared//Icons/65b233a57cb5b7a808852f03_feature-icon-02.svg" alt="">
-            <p>Customer support</p>
-        </div>
-        <div class="icon-box">
-            <img src="/Shared/Icons/65b233a5f1362d0152de74ad_feature-icon-03.svg" alt="">
-            <p>Returns and refunds</p>
-        </div>
+      <div class="icon-box">
+        <img
+          src="/Shared/Icons/65b234202f7c7e43072878d6_feature-icon-04.svg"
+          alt=""
+        />
+        <p>Quality materials</p>
+      </div>
+      <div class="icon-box">
+        <img
+          src="/Shared/Icons/65b233a562a42c23f1024dba_feature-icon-01.svg"
+          alt=""
+        />
+        <p>Free shipping</p>
+      </div>
+      <div class="icon-box">
+        <img
+          src="/Shared//Icons/65b233a57cb5b7a808852f03_feature-icon-02.svg"
+          alt=""
+        />
+        <p>Customer support</p>
+      </div>
+      <div class="icon-box">
+        <img
+          src="/Shared/Icons/65b233a5f1362d0152de74ad_feature-icon-03.svg"
+          alt=""
+        />
+        <p>Returns and refunds</p>
+        <script src="/Landing Page/LandingPage.js"></script>
+        <script src="../ProductDetails.js"></script>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

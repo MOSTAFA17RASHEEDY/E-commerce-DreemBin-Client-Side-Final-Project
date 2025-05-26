@@ -29,9 +29,7 @@ fetch("../Shared/JSON/products.json")
     console.error("Error loading products:", error);
   });
 
-
 fetch("/Shared/JSON/Categories.json")
-
   .then((response) => response.json())
   .then((categories) => {
     const ul = document.getElementById("CategoryList");
@@ -147,11 +145,17 @@ const cartFooter = document.getElementById("cartFooter");
 
 let cartItems = [];
 
+const savedCart = localStorage.getItem("cartItems");
+if (savedCart) {
+  cartItems = JSON.parse(savedCart);
+}
+renderCart();
 function toggleCart() {
   cartSidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
 
+// Add vibration when product is added
 function addToCart(name, price, image) {
   const existingItem = cartItems.find((item) => item.name === name);
   if (existingItem) {
@@ -160,6 +164,15 @@ function addToCart(name, price, image) {
     cartItems.push({ name, price, quantity: 1, image });
   }
   renderCart();
+  localStorage.setItem("cartItems", JSON.stringify(cartItems)); // Save to localStorage
+
+  // Vibrate animation
+  const cartCount = document.getElementById("cartCount");
+  if (cartCount) {
+    cartCount.classList.remove("vibrate");
+    void cartCount.offsetWidth;
+    cartCount.classList.add("vibrate");
+  }
 }
 
 function updateQuantity(index, quantity) {
@@ -168,11 +181,13 @@ function updateQuantity(index, quantity) {
     cartItems.splice(index, 1);
   }
   renderCart();
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
 function removeItem(index) {
   cartItems.splice(index, 1);
   renderCart();
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
 function renderCart() {
@@ -196,6 +211,11 @@ function renderCart() {
           `;
   });
 
+  // Update cart count
+  const cartCount = document.getElementById("cartCount");
+  const count = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  if (cartCount) cartCount.textContent = count;
+
   if (cartItems.length > 0) {
     cartFooter.innerHTML = `
     <p><strong>Subtotal</strong><span>: $${total.toFixed(2)} USD</span></p>
@@ -204,11 +224,17 @@ function renderCart() {
   } else {
     cartFooter.innerHTML = `
     <div style="text-align: center; padding: 30px;">
-      <img src="../Shared/Images/emptycart.png" style="width: 150px; opacity: 0.6;" />
+      <img src="/Shared/Images/emptycart.png" style="width: 150px; opacity: 0.6;" />
       <p style="margin-top: 10px;">No products inside your cart.</p>
       <button onclick="toggleCart()" class="checkout-btn">Start Shopping</button>
     </div>
   `;
   }
+
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+
+// Clear cart on page load
+// cartItems = [];
+// localStorage.removeItem("cartItems");
 renderCart();

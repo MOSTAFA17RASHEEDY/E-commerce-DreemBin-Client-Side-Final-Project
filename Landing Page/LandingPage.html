@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DreamBin</title>
     <link rel="stylesheet" href="LandingStyle.css" />
-    <script src="/Landing Page/LandingPage.js"></script>
+ 
     <script src="/Products/Products.js" ></script>
 
   </head>
   <body>
     <nav id="TopNavBar">
-      <div class="TopNav">
+      <div id="TopNav">
         <p>Exclusive Offer: Get 25% off Your First Purchase</p>
       </div>
       <div class="MainNav">
-        <a href="./LandingPage.html">
+        <a href="/Landing Page/LandingPage.html">
           <img
             src="/Shared/Images/dreambin-logo.svg"
             alt="DreamBin Logo"
@@ -48,15 +48,14 @@
             </button>
             <hr />
 
-            <button>
+            <button onclick="toggleCart()">
               <img src="/Shared/Icons/cart.svg" alt="Cart Icon" height="25" />
-
-              <span>0</span>
+              <span id="cartCount">0</span>
             </button>
           </div>
         </div>
       </div>
-      <hr />
+      <hr class="NavHr" />
 
 
           <div id="overlay" class="overlay" onclick="toggleCart()"></div>
@@ -138,42 +137,7 @@
         <div class="ShopByCategoryContent">
           <h1>Shop by Category</h1>
           <ul id="CategoryList">
-            <!-- <li>
-              <div class="ImgContanier">
-                <img src="../Shared/Images/category-image-05.jpg" />
-              </div>
-              <h3>Kitchen</h3>
-            </li>
-            <li>
-              <div class="ImgContanier">
-                <img src="../Shared/Images/category-image-05.jpg" />
-              </div>
-              <h3>Kitchen</h3>
-            </li>
-            <li>
-              <div class="ImgContanier">
-                <img src="../Shared/Images/category-image-05.jpg" />
-              </div>
-              <h3>Kitchen</h3>
-            </li>
-            <li>
-              <div class="ImgContanier">
-                <img src="../Shared/Images/category-image-05.jpg" />
-              </div>
-              <h3>Kitchen</h3>
-            </li>
-            <li>
-              <div class="ImgContanier">
-                <img src="../Shared/Images/category-image-05.jpg" />
-              </div>
-              <h3>Kitchen</h3>
-            </li>
-            <li>
-              <div class="ImgContanier">
-                <img src="../Shared/Images/category-image-05.jpg" />
-              </div>
-              <h3>Kitchen</h3>
-            </li> -->
+     
           </ul>
         </div>
       </section>
@@ -231,7 +195,7 @@
               <h3>Pillows flower printed</h3>
               <p>$ 42.30 USD</p>
             </div>
-          </li> -->
+          </li> 
         </ul>
         <div class="ImgRoundedContanier">
           <img src="../Shared/Icons/project-rounded-vector.svg" alt="" />
@@ -403,8 +367,6 @@
 </div>
 <hr class="hrOfFooter">
 <div class="row EndOfFooter"><p>Designed and Developed by Team 5.</p></div>
-
-
         </div>
       </div>
     </footer>
