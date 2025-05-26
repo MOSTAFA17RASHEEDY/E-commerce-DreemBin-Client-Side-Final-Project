@@ -14,22 +14,25 @@
       <div class="MainNav">
         <a href="./LandingPage.html">
           <img
-            src="../Shared/Images/dreambin-logo.svg"
+            src="/Shared/Images/dreambin-logo.svg"
             alt="DreamBin Logo"
             height="85"
           />
         </a>
         <div class="RightPartOfNav">
           <div class="Lists">
-            <input type="text" placeholder="Search" />
+            <!-- Place this just after your search input -->
+            <input id="SearchInput" type="text" placeholder="Search" />
+            <span id="clearSearch" class="clearSearhClass" >&#10005;</span>
+            <div id="searchDropdown" class="search-dropdown"></div>
             <hr />
             <ul>
               <li><a href="#">Home</a></li>
               <li>
-                <a href="../Products/All Products/AllProducts.html">Products</a>
+                <a href="/Products/All Products/AllProducts.html">Products</a>
               </li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="../Login/Login.html">Log Out</a></li>
+              <li><a href="#Footer">Contact Us</a></li>
+              <li><a href="/Login/Login.html">Log Out</a></li>
             </ul>
           </div>
           <hr />

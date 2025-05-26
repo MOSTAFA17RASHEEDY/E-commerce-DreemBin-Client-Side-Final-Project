@@ -1,11 +1,15 @@
+let allProducts = [];
+
+// Fetch products ONCE and use for both best sellers and search
 fetch("../Shared/JSON/products.json")
   .then((response) => response.json())
   .then((products) => {
-    const bestSellers = products.filter((product) => product.BestSell);
+    allProducts = products;
 
+    // Featured products (Best Sellers)
+    const bestSellers = allProducts.filter((product) => product.BestSell);
     const ul = document.getElementById("featured-products-list");
     ul.innerHTML = "";
-
     bestSellers.forEach((product) => {
       const li = document.createElement("li");
       li.innerHTML = `
@@ -25,6 +29,7 @@ fetch("../Shared/JSON/products.json")
     console.error("Error loading products:", error);
   });
 
+// Fetch categories (no change needed)
 fetch("../Shared/JSON/Categories.json")
   .then((response) => response.json())
   .then((categories) => {
@@ -51,3 +56,85 @@ fetch("../Shared/JSON/Categories.json")
   .catch((error) => {
     console.error("Error loading categories:", error);
   });
+
+// --- Search Functionality ---
+const searchInput = document.getElementById("SearchInput");
+const searchDropdown = document.getElementById("searchDropdown");
+const clearSearch = document.getElementById("clearSearch");
+
+const inputParent = searchInput.parentElement;
+inputParent.style.position = "relative";
+searchDropdown.style.position = "absolute";
+searchDropdown.style.top = `${
+  searchInput.offsetTop + searchInput.offsetHeight + 2
+}px`;
+searchDropdown.style.left = `${searchInput.offsetLeft}px`;
+searchDropdown.style.width = `${searchInput.offsetWidth}px`;
+
+function renderDropdown(items, message = "") {
+  searchDropdown.innerHTML = "";
+  if (message) {
+    searchDropdown.innerHTML = `<div class="search-message">${message}</div>`;
+  } else {
+    items.forEach((product) => {
+      const div = document.createElement("div");
+      div.className = "search-item";
+      div.innerHTML = `
+        <img src="..${product.image}" alt="${product.title}" />
+        <span>${product.title}</span>
+      `;
+      div.onclick = () => {
+        window.location.href = `../Products/All Products/AllProducts.html?product=${encodeURIComponent(
+          product.title
+        )}`;
+      };
+      searchDropdown.appendChild(div);
+    });
+  }
+  searchDropdown.style.display = "block";
+}
+
+function hideDropdown() {
+  searchDropdown.style.display = "none";
+}
+
+searchInput.addEventListener("input", function () {
+  const value = this.value.trim();
+  if (!value) {
+    renderDropdown([], "Lets Search for your product ...");
+    clearSearch.style.display = "none";
+    return;
+  }
+  clearSearch.style.display = "inline";
+  const matches = allProducts
+    .filter((p) => p.title.toLowerCase().includes(value.toLowerCase()))
+    .slice(0, 5);
+
+  if (matches.length > 0) {
+    renderDropdown(matches);
+  } else {
+    renderDropdown([], "There is no Product with this name !");
+  }
+});
+
+searchInput.addEventListener("focus", function () {
+  if (!this.value.trim()) {
+    renderDropdown([], "Lets Search for your product ...");
+  }
+});
+
+clearSearch.addEventListener("click", function () {
+  searchInput.value = "";
+  hideDropdown();
+  clearSearch.style.display = "none";
+});
+
+document.addEventListener("click", function (e) {
+  if (
+    !searchInput.contains(e.target) &&
+    !searchDropdown.contains(e.target) &&
+    e.target !== clearSearch
+  ) {
+    hideDropdown();
+  }
+});
