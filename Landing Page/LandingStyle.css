@@ -11,7 +11,9 @@
   box-sizing: border-box;
   font-family: "Archivo", sans-serif;
 }
-
+body{
+background-color: #ffffe9;
+}
 /* NavBar style */
 .TopNav {
   text-align: center;
@@ -23,7 +25,7 @@
 }
 
 .MainNav {
-  background-color: #ffffe9;
+ transition: background-color;
   padding-top: 10px;
   display: flex;
   justify-content: space-between;

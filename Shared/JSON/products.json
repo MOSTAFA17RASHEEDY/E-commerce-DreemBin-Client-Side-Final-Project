@@ -1,122 +1,247 @@
 [
-  {
-    "id": 1,
-    "category": "bags",
-    "page": 1,
-    "image": "/Shared/Images/65ab5ad905de6751921e7a0c_product-image-12.jpg",
-    "title": "Metal clutch purse",
-    "price": 30.00,
-    "discountedPrice": 24.30,
-    "BestSell": true
-  },
-  {
-    "id": 2,
-    "category": "serveware",
-    "page": 1,
-    "image": "/Shared/Images/65ab5614d6e8611d02b30a4b_product-image-11.jpg",
-    "title": "Bento box",
-    "price": 72.30,
-    "discountedPrice": null,
-    "BestSell": false
-  },
-  {
-    "id": 3,
-    "category": "Furnishing",
-    "page": 1,
-    "image": "/Shared/Images/65ab54c2524f9e4d4b923791_product-image-10.jpg",
-    "title": "Floral mexican pillow",
-    "price": 64.30,
-    "discountedPrice": null,
-    "BestSell": true
-  },
-  {
-    "id": 4,
-    "category": "Watches",
-    "page": 1,
-    "image": "/Shared/Images/65ab53b33f6ffd7ffa7c7a3a_product-image-09.jpg",
-    "title": "Botanicals wall clock",
-    "price": 70.00,
-    "discountedPrice": 60.30,
-    "BestSell": false
-  },
-  {
-    "id": 5,
-    "category": "serveware",
-    "page": 1,
-    "image": "/Shared/Images/65ab52045faa95ea31319409_product-image-07.jpg",
-    "title": "Hanging lamp",
-    "price": 70.30,
-    "discountedPrice": null,
-    "BestSell": true
-  },
-  {
-    "id": 6,
-    "category": "gifts",
-    "page": 1,
-    "image": "/Shared/Images/65ab52045faa95ea31319409_product-image-07.jpg",
-    "title": "Ceramic oatmeal bowls",
-    "price": 56.30,
-    "discountedPrice": 50.00,
-    "BestSell": false
-  },
-  {
-    "id": 7,
-    "category": "Furnishing",
-    "page": 2,
-    "image": "/Shared/Images/65ab50e1becdc4e575a0614b_product-image-02.jpg",
-    "title": "Pillows flower Printed",
-    "price": 42.30,
-    "discountedPrice": null,
-    "BestSell": true
-  },
-  {
-    "id": 8,
-    "category": "dining",
-    "page": 2,
-    "image": "/Shared/Images/65ab508361c88173f6f53e5c_product-image-03 (1).jpg",
-    "title": "Ceramic plates bowls",
-    "price": 35.30,
-    "discountedPrice": null,
-    "BestSell": false
-  },
-  {
-    "id": 9,
-    "category": "bags",
-    "page": 2,
-    "image": "/Shared/Images/65ab50592f963c198a3a2a2a_product-image-04 (1).jpg",
-    "title": "Embroidered bag",
-    "price": 45.00,
-    "discountedPrice": null,
-    "BestSell": true
-  },
-  {
-    "id": 10,
-    "category": "gifts",
-    "page": 2,
-    "image": "/Shared/Images/65ab4ed0e3470a53f2456cc2_product-image-05.jpg",
-    "title": "Hand-painted teapot",
-    "price": 40.84,
-    "discountedPrice": 50.00,
-    "BestSell": false
-  },
-  {
-    "id": 11,
-    "category": "Watches",
-    "page": 2,
-    "image": "/Shared/Images/product-image-06.jpg",
-    "title": "Clock decoration",
-    "price": 39.49,
-    "discountedPrice": null,
-    "BestSell": false
-  },
-  {
-    "id": 12,
-    "category": "dining",
-    "page": 2,
-    "image": "/Shared/Images/65ab50e1becdc4e575a0614b_product-image-02.jpg",
-    "title": "Serving tray",
-    "price": 25.00,
-    "discountedPrice": null,
-    "BestSell": false
-  }
+    {
+        "id": 1,
+        "category": "bags",
+        "page": 1,
+        "title": "Metal clutch purse",
+        "subtitle": "Elegant clutch purse perfect for evening outings and special occasions.",
+        "price": 30.00,
+        "discountedPrice": 24.30,
+        "BestSell": true,
+        "image": "/Shared/Images/65ab5ad905de6751921e7a0c_product-image-12.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Crafted with premium materials for durability and style.",
+            "Compact design ideal for essentials like phone, keys, and makeup.",
+            "Elegant metallic finish enhances any outfit.",
+            "Secure closure to keep belongings safe.",
+            "Lightweight and easy to carry for all-day comfort."
+        ]
+    },
+    {
+        "id": 2,
+        "category": "serveware",
+        "page": 1,
+        "title": "Bento box",
+        "subtitle": "Stylish bento box for organized and convenient meal prep.",
+        "price": 72.30,
+        "BestSell": true,
+        "discountedPrice": null,
+        "image": "/Shared/Images/65ab5614d6e8611d02b30a4b_product-image-11.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Descripti`on"],
+        "features": [
+            "Multiple compartments for versatile meal organization.",
+            "Made from high-quality, food-safe materials.",
+            "Durable design suitable for daily use.",
+            "Leak-proof lid for secure transport.",
+            "Easy to clean and dishwasher-safe."
+        ]
+    },
+    {
+        "id": 3,
+        "category": "Furnishing",
+        "page": 1,
+        "title": "Floral mexican pillow",
+        "subtitle": "Vibrant pillow with floral patterns to brighten any space.",
+        "price": 64.30,
+        "BestSell": true,
+        "discountedPrice": null,
+        "image": "/Shared/Images/65ab54c2524f9e4d4b923791_product-image-10.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Soft and comfortable fabric for cozy lounging.",
+            "Vibrant floral design adds a touch of elegance.",
+            "Durable stitching for long-lasting use.",
+            "Perfect for sofas, beds, or chairs.",
+            "Easy to clean with removable cover."
+        ]
+    },
+    {
+        "id": 4,
+        "category": "Watches",
+        "page": 1,
+        "title": "Botanicals wall clock",
+        "subtitle": "Elegant wall clock with botanical design for timeless decor.",
+        "price": 70.00,
+        "BestSell": true,
+        "discountedPrice": 60.30,
+        "image": "/Shared/Images/65ab53b33f6ffd7ffa7c7a3a_product-image-09.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Silent ticking mechanism for peaceful environments.",
+            "Botanical design complements any decor style.",
+            "Made with durable materials for longevity.",
+            "Easy to install with included mounting hardware.",
+            "Battery-operated for convenient use."
+        ]
+    },
+    {
+        "id": 5,
+        "category": "serveware",
+        "page": 1,
+        "title": "Hanging lamp",
+        "subtitle": "Modern hanging lamp to illuminate and enhance your space.",
+        "price": 70.30,
+        "BestSell": true,
+        "discountedPrice": null,
+        "image": "/Shared/Images/65ab52045faa95ea31319409_product-image-07.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Sleek design for modern and minimalist interiors.",
+            "Energy-efficient lighting for cost savings.",
+            "Adjustable height for versatile placement.",
+            "Made with high-quality materials for durability.",
+            "Easy to install with clear instructions."
+        ]
+    },
+    {
+        "id": 6,
+        "category": "gifts",
+        "page": 1,
+        "title": "Ceramic oatmeal bowls",
+        "subtitle": "Bowls with a wide rim are convenient for adding toppings like fruits, nuts, or granola.",
+        "price": 56.30,
+        "discountedPrice": 50.00,
+        "image": "/Shared/Images/65ab52045faa95ea31319409_product-image-07.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Comfort reached gay perhaps chamber his six detract besides add.",
+            "Moonlight newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young.",
+            "At weddings believed in laughing although the material does the exercise of.",
+            "Demesne far hearted about the supposed venture and excited to see had has. Dependent on so extremely delivered by.",
+            "Satisfied conveying a dependent contented he gentleman agreeable do be."
+        ]
+    },
+    {
+        "id": 7,
+        "category": "furnishing",
+        "page": 2,
+        "title": "Pillows flower Printed",
+        "subtitle": "Cozy pillows with floral prints to enhance your home decor.",
+        "price": 42.30,
+        "discountedPrice": null,
+        "image": "/Shared/Images/65ab50e1becdc4e575a0614b_product-image-02.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Soft and supportive for ultimate comfort.",
+            "Vibrant floral prints add a stylish touch.",
+            "Durable fabric withstands daily use.",
+            "Perfect for living rooms or bedrooms.",
+            "Machine-washable cover for easy care."
+        ]
+    },
+    {
+        "id": 8,
+        "category": "dining",
+        "page": 2,
+        "title": "Ceramic plates bowls",
+        "subtitle": "Elegant ceramic plates and bowls for stylish dining.",
+        "price": 35.30,
+        "discountedPrice": null,
+        "image": "/Shared/Images/65ab508361c88173f6f53e5c_product-image-03 (1).jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "High-quality ceramic for durability and elegance.",
+            "Perfect for everyday dining or special occasions.",
+            "Dishwasher and microwave safe for convenience.",
+            "Classic design complements any table setting.",
+            "Stackable for easy storage."
+        ]
+    },
+    {
+        "id": 9,
+        "category": "bags",
+        "page": 2,
+        "title": "Embroidered bag",
+        "subtitle": "Beautifully embroidered bag for a unique and stylish look.",
+        "price": 45.00,
+        "discountedPrice": null,
+        "image": "/Shared/Images/65ab50592f963c198a3a2a2a_product-image-04 (1).jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Intricate embroidery for a unique aesthetic.",
+            "Spacious interior for all your essentials.",
+            "Durable materials ensure long-lasting use.",
+            "Comfortable straps for easy carrying.",
+            "Perfect for casual or formal occasions."
+        ]
+    },
+    {
+        "id": 10,
+        "category": "gifts",
+        "page": 2,
+        "title": "Hand-painted teapot",
+        "subtitle": "Artisanal hand-painted teapot for a charming tea experience.",
+        "price": 50.00,
+        "discountedPrice": 40.84,
+        "image": "/Shared/Images/65ab4ed0e3470a53f2456cc2_product-image-05.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Hand-painted design for a unique look.",
+            "High-quality ceramic for heat retention.",
+            "Ergonomic handle for easy pouring.",
+            "Perfect for tea lovers and collectors.",
+            "Easy to clean and maintain."
+        ]
+    },
+    {
+        "id": 11,
+        "category": "Watches",
+        "page": 2,
+        "title": "Clock decoration",
+        "subtitle": "Decorative clock to add charm to any room.",
+        "price": 39.49,
+        "discountedPrice": null,
+        "image": "/Shared/Images/product-image-06.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Stylish design enhances room aesthetics.",
+            "Quiet mechanism for undisturbed use.",
+            "Made with durable materials for longevity.",
+            "Easy to hang with included hardware.",
+            "Battery-powered for hassle-free operation."
+        ]
+    },
+    {
+        "id": 12,
+        "category": "dining",
+        "page": 2,
+        "title": "Serving tray",
+        "subtitle": "Versatile serving tray for elegant dining and entertaining.",
+        "price": 25.00,
+        "discountedPrice": null,
+        "image": "/Shared/Images/65ab50e1becdc4e575a0614b_product-image-02.jpg",
+        "quantity": { "default": 1, "min": 1 },
+        "shipping": { "note": "Free shipping on orders over $299USD" },
+        "tabs": ["Info", "Description"],
+        "features": [
+            "Sturdy construction for reliable use.",
+            "Elegant design suitable for any occasion.",
+            "Easy to carry with comfortable handles.",
+            "Made from high-quality materials.",
+            "Easy to clean and maintain."
+        ]
+    }
 ]

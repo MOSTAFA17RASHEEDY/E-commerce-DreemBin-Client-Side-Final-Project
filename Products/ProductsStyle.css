@@ -49,7 +49,7 @@ header h1 {
     margin: 0;
 }
 
-nav {
+.navproduct {
     text-align: center;
     padding: 10px;
     display: flex;
@@ -59,7 +59,7 @@ nav {
     gap: 10px; 
 }
 
-nav span {
+.navproduct span {
     color: rgb(51, 51, 46);
     font-weight: 400;
     font-size: 16px;
@@ -103,14 +103,13 @@ main {
 }
 
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 100px;
-    justify-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    max-width: 1400px; 
-    margin: 0 auto;
+    margin: auto;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 30px;
+    column-gap: 30px;
 }
 
 article.product {
@@ -160,6 +159,8 @@ article.product img {
     transform: translateY(100%); 
     opacity: 0; 
     transition: transform 0.3s ease, opacity 0.3s ease; 
+    text-decoration: none;
+
 }
 
 .product-image-container:hover .hover-button {
@@ -202,8 +203,12 @@ article.product img {
     display: inline-block;
     margin-right: 10px;
 }
-
-.pagination button {
+#pageIndicator{
+    text-align: center;
+        margin-left:200px;
+    margin-right: 200px;
+}
+.buttonProduct {
     border: 1px solid #33332e;
     border-radius: 10px;
     background-color: #b4ddff;
@@ -213,20 +218,124 @@ article.product img {
     transition: background-color .3s ease-in-out;
 }
 
-.pagination button:hover {
+.buttonProduct:hover {
     background-color: #b19ddf;
     cursor: pointer;
 }
 
-.price-discounted {
+.original-price {
     text-decoration: line-through;
     text-decoration-color: #888;
     color: #888; 
     margin-left: 10px; 
     font-size: 0.9em;
 }
-
+.price-discounted {
+    color: #171714;
+    font-size: 1.1em;
+}
 .category-btn.active-category {
     background-color: #ffd9d1;
     border: 1px solid #333;
 }
+
+
+/*==============*/
+.container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            gap: 40px;
+        }
+
+        .product-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            width: 100%;
+        }
+        .product-detail h1 
+        {
+            font-family: 'RoseMadinaRegular';
+            margin-bottom: 20px;
+        }
+
+        .image-section {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            min-width: 500px;
+            padding-right: 100px;
+            
+        }
+
+        .image-section img {
+            max-width: 100%;
+            border-radius: 20px;
+            border: 1px solid #aaa;
+        }
+
+
+        .product-details {
+            flex: 1;
+            min-width: 300px;
+        }
+
+
+
+        .price-container {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .button-primary-2{
+
+    border: 1px solid #33332e;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #b4ddff;
+    color: #171714;
+    justify-content: center;
+    padding: 15px 20px;
+    transition: background-color .3s ease-in-out;
+     margin-bottom: 15px;
+        }
+        .button-primary-2:hover
+        {
+            background-color: #ffd9d1;
+            color: #171714;
+            text-decoration: none;
+        }
+        .add-to-cart {
+            background-color: #b4ddff;
+            border: 1px solid #171714;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .cartlab{
+                    font-weight: 400;
+                    display: block;
+                        margin-bottom: 5px;
+        }
+        .cartnum{
+    border: 1px solid #171714;
+    width: 60px;
+    border-radius: 50px;
+    padding: 8px 6px 8px 12px;
+    font-size: 18px;
+    background: transparent;
+        }
+        .add-to-cart:hover {
+            background-color: #b19ddf;
+        }
+
+        .footer-icons {
+            display: flex;
+            text-align: center;
+            justify-content: space-around;
+            padding: 30px 0;
+            margin-top: 100px;
+        }

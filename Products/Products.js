@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   let currentPage = 1;
-  let currentCategory = "all";
+  const totalPages = 2; 
+  const urlParams = new URLSearchParams(window.location.search);
+  let currentCategory = urlParams.get("category")?.toLowerCase() || "all";
   let products = [];
+  let categories = [];
 
   const productGrid = document.getElementById("productGrid");
   const categoryButtons = document.querySelectorAll(".category-btn");
@@ -11,27 +14,37 @@ document.addEventListener("DOMContentLoaded", function () {
   const pagination = document.querySelector(".pagination");
   const shopTitle = document.querySelector("#shop h1");
 
-  const categoryNames = {
-    all: "Shop",
-    gifts: "Gifts",
-    dining: "Dining",
-    serveware: "Serveware",
-    Furnishing: "Furnishing",
-    bags: "Bags",
-    Watches: "Watches",
-  };
 
-  fetch(window.location.origin + "/Shared/JSON/products.json") // http://127.0.0.1:5500/ + "/Shared/JSON/products.json"
+  fetch(window.location.origin + "/Shared/JSON/Categories.json")
+    .then((response) => response.json())
+    .then((data) => {
+      categories = data;
+      const validCategories = categories.map((category) => category.title.toLowerCase());
+      if (currentCategory !== "all" && !validCategories.includes(currentCategory)) {
+        currentCategory = "all"; 
+      }
+        categoryButtons.forEach((button) => {
+        const buttonCategory = button.getAttribute("data-category")?.toLowerCase();
+        if (buttonCategory === currentCategory) {
+          button.classList.add("active-category");
+        } else {
+          button.classList.remove("active-category");
+        }
+      });
+      return fetch(window.location.origin + "/Shared/JSON/products.json");
+    })
     .then((response) => response.json())
     .then((data) => {
       products = data;
       updateProducts();
+    })
+    .catch((error) => {
+      console.error("Error loading data:", error);
     });
-    
 
   function getTotalPagesForCategory(category) {
     const filteredProducts = products.filter((product) => {
-      return category === "all" || product.category === category;
+      return category === "all" || product.category.toLowerCase() === category;
     });
 
     if (category === "all") {
@@ -49,23 +62,20 @@ document.addEventListener("DOMContentLoaded", function () {
     article.setAttribute("data-page", product.page);
 
     const priceHTML = product.discountedPrice
-      ? `<p> $${product.price.toFixed(
-          2
-        )} USD <span class="price-discounted">$${product.discountedPrice.toFixed(
-          2
-        )} USD</span></p>`
-      : `<p> $${product.price.toFixed(2)} USD </p>`;
+      ? `<p><span class="original-price" style="text-decoration: line-through;">$${product.price.toFixed(2)} USD</span> 
+         <span class="price-discounted">$${product.discountedPrice.toFixed(2)} USD</span></p>`
+      : `<p>$${product.price.toFixed(2)} USD</p>`;
 
     article.innerHTML = `
-            <div class="product-image-container">
-                <img src="${product.image}" alt="${product.title}">
-                <button class="hover-button">View Details</button>
-            </div>
-            <h2 class="product-title">${product.title}</h2>
-            <div class="product-price-wrap">
-                ${priceHTML}
-            </div>
-        `;
+      <div class="product-image-container">
+        <img src="${product.image}" alt="${product.title}">
+        <a href="/Products/Product Details/ProductDetails.html?id=${product.id}" class="hover-button">View Details</a>
+      </div>
+      <h2 class="product-title">${product.title}</h2>
+      <div class="product-price-wrap">
+        ${priceHTML}
+      </div>
+    `;
     return article;
   }
 
@@ -75,9 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     products.forEach((product) => {
       const matchCategory =
-        currentCategory === "all" || product.category === currentCategory;
-      const matchPage =
-        currentCategory === "all" ? product.page === currentPage : true;
+        currentCategory === "all" || product.category.toLowerCase() === currentCategory;
+      const matchPage = currentCategory === "all" ? product.page === currentPage : true;
 
       if (matchCategory && matchPage) {
         const productElement = createProductElement(product);
@@ -85,21 +94,22 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    shopTitle.textContent = categoryNames[currentCategory] || "Shop";
+    const selectedCategory = categories.find(
+      (category) => category.title.toLowerCase() === currentCategory
+    );
+    shopTitle.textContent = currentCategory === "all" ? "Shop" : selectedCategory?.title || "Shop";
 
-    pagination.style.display =
-      currentCategory === "all" && totalPages > 1 ? "" : "none";
+    pagination.style.display = currentCategory === "all" && totalPages > 1 ? "" : "none";
     pageIndicator.textContent = `${currentPage} / ${totalPages}`;
-    prevBtn.disabled = currentPage === 1;
-    nextBtn.disabled = currentPage === totalPages;
+    prevBtn.style.display = currentPage === 1 ? "none" : "inline-block";
+    nextBtn.style.display = currentPage === totalPages ? "none" : "inline-block";
   }
 
   categoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
       categoryButtons.forEach((btn) => btn.classList.remove("active-category"));
       button.classList.add("active-category");
-
-      currentCategory = button.getAttribute("data-category");
+      currentCategory = button.getAttribute("data-category")?.toLowerCase() || "all";
       currentPage = 1;
       updateProducts();
     });
@@ -120,4 +130,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-

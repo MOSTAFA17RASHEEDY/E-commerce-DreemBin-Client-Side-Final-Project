@@ -1,20 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Shop</title>
-    <link rel="stylesheet" href="../ProductsStyle.css">
+    <link rel="stylesheet" href="/Products/ProductsStyle.css" />
+    <link rel="stylesheet" href="/Landing Page/LandingStyle.css" />
     <script src="../Products.js" defer></script>
-</head>
+  </head>
 <body>
+        <nav style="background-color:#b4ddff ;">
+      <div class="TopNav">
+        <p>Exclusive Offer: Get 25% off Your First Purchase</p>
+      </div>
+      <div class="MainNav">
+        <a href="./LandingPage.html">
+          <img
+            src="/Shared/Images/dreambin-logo.svg"
+            alt="DreamBin Logo"
+            height="85"
+          />
+        </a>
+        <div class="RightPartOfNav">
+          <div class="Lists">
+            <input type="text" placeholder="Search" />
+            <hr />
+            <ul>
+              <li><a href="/Landing Page/LandingPage.html">Home</a></li>
+              <li><a href="/Products//All Products/AllProducts.html">Products</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <hr />
+          <div class="Buttons">
+            <button>
+              <img
+                src="/Shared/Icons/search-icon.svg"
+                alt="Search Icon"
+                height="25"
+              />
+            </button>
+            <hr />
+            <button>
+              <img src="/Shared/Icons/cart.svg" alt="Cart Icon" height="25" />
+              <span>0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </nav>
     <div id="shop">
         <header>
             <h1>Shop</h1>
         </header>
-        <nav>
+        <nav class="navproduct">
             <span>Shop by:</span>
             <div class="category-buttons">
-                <button class="category-btn" data-category="all">All</button>
+                <button class="category-btn active-category" data-category="all"> All</button>
                 <button class="category-btn" data-category="gifts">Gifts</button>
                 <button class="category-btn" data-category="dining">Dining</button>
                 <button class="category-btn" data-category="serveware">Serveware</button>
@@ -28,12 +70,12 @@
         <img src="../../Shared/Images/65aa19740c834b38b1764b65_hero-inner-image.svg" alt="background">
     </div>
     <main>
-        <section class="product-grid" id="productGrid"></section>
-        <div class="pagination">
-            <button id="prevBtn">Previous</button>
-            <p id="pageIndicator">1 / 2</p>
-            <button id="nextBtn">Next</button>
-        </div>
+      <section class="product-grid" id="productGrid"></section>
+      <div class="pagination">
+        <button class="buttonProduct" id="prevBtn">Previous</button>
+        <p id="pageIndicator">1 / 2</p>
+        <button class="buttonProduct" id="nextBtn">Next</button>
+      </div>
     </main>
 </body>
 </html>
