@@ -46,8 +46,8 @@ function displayProductDetails(product) {
             </div>
             <div class="product-actions">
                 <label class="cartlab">Quantity in cart</label>
-                <input type="number" class="cartnum" min="1" value=${cartQuantity} />
-                <span id="cartProductCount" style="margin-left:10px;color:#b19ddf;font-weight:bold;">In cart: ${cartQuantity}</span>
+                <input type="number" class="cartnum" min="1" value=${cartQuantity} style="display: none;"/>
+                <span id="cartProductCount" >${cartQuantity}</span>
                 <button class="button-primary-2" id="addToCartBtn">Add to Cart</button>
             </div>
             <p class="product-detail-shipping">Free shipping on orders over $299USD</p>
@@ -84,7 +84,7 @@ function displayProductDetails(product) {
       updatedCart = JSON.parse(updatedSavedCart);
     }
     const updatedItem = updatedCart.find((item) => item.name === product.title);
-    cartProductCount.textContent = `In cart: ${
+    cartProductCount.textContent = `${
       updatedItem ? updatedItem.quantity : 0
     }`;
   });

@@ -113,7 +113,8 @@ main {
 
 .product-grid {
   margin: auto;
-  width: 70%;
+  width: 90%;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -286,7 +287,18 @@ article.product img {
   flex: 1;
   min-width: 300px;
 }
-
+#cartProductCount {
+  display: inline-block;
+  margin-left: 5px;
+  color: #b19ddf;
+  font-weight: bold;
+  width: 50px;
+  border: 1px solid;
+  border-radius: 20px;
+  text-align: center;
+  color: black;
+  margin-right: 10px;
+}
 .price-container {
   font-size: 20px;
   margin-bottom: 15px;

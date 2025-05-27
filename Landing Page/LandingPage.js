@@ -1,7 +1,7 @@
 let allProducts = [];
 
 // Fetch products ONCE and use for both best sellers and search
-fetch("../Shared/JSON/products.json")
+fetch("/Shared/JSON/products.json")
   .then((response) => response.json())
   .then((products) => {
     allProducts = products;
@@ -13,14 +13,16 @@ fetch("../Shared/JSON/products.json")
     bestSellers.forEach((product) => {
       const li = document.createElement("li");
       li.innerHTML = `
-        <div class="ProductContainer">
+        <a class="ProductContainer" href="/Products/Product Details/ProductDetails.html?id=${
+          product.id
+        }" class="hover-button" style="display:block;text-decoration:none; color:inherit;">
           <button>Shop Now</button>
           <div class="ProductImgContainer">
-            <img src="..${product.image}" alt="${product.title}" />
+            <img src="${product.image}" alt="${product.title}" />
           </div>
           <h3>${product.title}</h3>
           <p>$ ${product.price.toFixed(2)} USD</p>
-        </div>
+        </a>
       `;
       ul.appendChild(li);
     });
@@ -79,14 +81,12 @@ function renderDropdown(items, message = "") {
       const div = document.createElement("div");
       div.className = "search-item";
       div.innerHTML = `
-        <img src="..${product.image}" alt="${product.title}" />
+      <a href="../Products/Product Details/ProductDetails.html?id=${product.id}"  style="display:block;text-decoration:none; color:inherit; display:flex; align-items:center;">
+        <img src="${product.image}" alt="${product.title}" />
         <span>${product.title}</span>
+        </a>
       `;
-      div.onclick = () => {
-        window.location.href = `../Products/All Products/AllProducts.html?product=${encodeURIComponent(
-          product.title
-        )}`;
-      };
+
       searchDropdown.appendChild(div);
     });
   }
@@ -197,18 +197,18 @@ function renderCart() {
   cartItems.forEach((item, index) => {
     total += item.price * item.quantity;
     cartItemsContainer.innerHTML += `
-            <div class="cart-item">
-              <img src="${item.image}" alt="${item.name}">
-              <div class="cart-item-details">
-                <h4>${item.name}</h4>
-                <p>$${item.price.toFixed(2)} USD</p>
-                <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
-              </div>
-              <input type="number" min="1" value="${
-                item.quantity
-              }" onchange="updateQuantity(${index}, this.value)">
-            </div>
-          `;
+      <div class="cart-item">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-item-details">
+          <h4>${item.name}</h4>
+          <p>$${item.price.toFixed(2)} USD</p>
+          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        </div>
+        <input type="number" min="1" value="${
+          item.quantity
+        }" onchange="updateQuantity(${index}, this.value)">
+      </div>
+    `;
   });
 
   // Update cart count
@@ -218,17 +218,19 @@ function renderCart() {
 
   if (cartItems.length > 0) {
     cartFooter.innerHTML = `
-    <p><strong>Subtotal</strong><span>: $${total.toFixed(2)} USD</span></p>
-    <button class="checkout-btn">Continue to Checkout</button>
-  `;
+      <p><strong>Subtotal</strong><span>: $${total.toFixed(2)} USD</span></p>
+      <button class="checkout-btn" id="checkoutBtn">Continue to Checkout</button>
+    `;
+    // Add event listener for checkout
+    document.getElementById("checkoutBtn").onclick = handleCheckout;
   } else {
     cartFooter.innerHTML = `
-    <div style="text-align: center; padding: 30px;">
-      <img src="/Shared/Images/emptycart.png" style="width: 150px; opacity: 0.6;" />
-      <p style="margin-top: 10px;">No products inside your cart.</p>
-      <button onclick="toggleCart()" class="checkout-btn">Start Shopping</button>
-    </div>
-  `;
+      <div style="text-align: center; padding: 30px;">
+        <img src="/Shared/Images/emptycart.png" style="width: 150px; opacity: 0.6;" />
+        <p style="margin-top: 10px;">No products inside your cart.</p>
+        <button onclick="toggleCart()" class="checkout-btn">Start Shopping</button>
+      </div>
+    `;
   }
 
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -238,3 +240,53 @@ function renderCart() {
 // cartItems = [];
 // localStorage.removeItem("cartItems");
 renderCart();
+
+function handleCheckout() {
+  if (cartItems.length === 0) return;
+
+  let orders = [];
+  const savedOrders = localStorage.getItem("orders");
+  if (savedOrders) {
+    orders = JSON.parse(savedOrders);
+  }
+
+  orders.push({
+    date: new Date().toISOString(),
+    items: cartItems.map((item) => ({
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      image: item.image,
+    })),
+  });
+
+  localStorage.setItem("orders", JSON.stringify(orders));
+  cartItems = [];
+  renderCart();
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+  showCartMessage("Your order has been placed!");
+}
+
+function showCartMessage(msg) {
+  let msgDiv = document.createElement("div");
+  msgDiv.textContent = msg;
+  msgDiv.style.cssText = `
+    background: #b4ddff;
+    color: #222;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    z-index: 1000;
+  `;
+  msgDiv.id = "cart-success-msg";
+  cartSidebar.insertBefore(msgDiv, cartSidebar.firstChild);
+
+  setTimeout(() => {
+    if (msgDiv.parentNode) msgDiv.parentNode.removeChild(msgDiv);
+  }, 3000);
+}
