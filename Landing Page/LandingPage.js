@@ -1,3 +1,16 @@
+(function () {
+  // Allow access to login and 404 pages only without session
+  const allowedPages = ["/Login/Login.html", "/Shared/404.html"];
+  if (allowedPages.some((page) => window.location.pathname.endsWith(page)))
+    return;
+
+  const session = JSON.parse(sessionStorage.getItem("userSession") || "null");
+  if (!session || Date.now() > session.expiresAt) {
+    sessionStorage.removeItem("userSession");
+    window.location.href = "/Shared/404.html";
+  }
+})();
+
 let allProducts = [];
 
 // Fetch products ONCE and use for both best sellers and search

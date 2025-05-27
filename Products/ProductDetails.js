@@ -1,3 +1,16 @@
+(function () {
+  // Allow access to login and 404 pages only without session
+  const allowedPages = ["/Login/Login.html", "/Shared/404.html"];
+  if (allowedPages.some((page) => window.location.pathname.endsWith(page)))
+    return;
+
+  const session = JSON.parse(sessionStorage.getItem("userSession") || "null");
+  if (!session || Date.now() > session.expiresAt) {
+    sessionStorage.removeItem("userSession");
+    window.location.href = "/Shared/404.html";
+  }
+})();
+
 function showProductDetails(productId) {
   fetch("/Shared/JSON/products.json")
     .then((response) => response.json())
@@ -84,9 +97,7 @@ function displayProductDetails(product) {
       updatedCart = JSON.parse(updatedSavedCart);
     }
     const updatedItem = updatedCart.find((item) => item.name === product.title);
-    cartProductCount.textContent = `${
-      updatedItem ? updatedItem.quantity : 0
-    }`;
+    cartProductCount.textContent = `${updatedItem ? updatedItem.quantity : 0}`;
   });
 }
 

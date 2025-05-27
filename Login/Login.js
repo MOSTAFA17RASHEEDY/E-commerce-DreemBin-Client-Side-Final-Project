@@ -11,7 +11,7 @@ async function handleLogin(event) {
   passwordError.innerText = "";
 
   try {
-    const res = await fetch("users.json");
+    const res = await fetch("/Shared/JSON/users.json");
     const users = await res.json();
 
     const user = users.find((user) => user.email === email);
@@ -21,10 +21,24 @@ async function handleLogin(event) {
     } else if (user.password !== password) {
       passwordError.innerText = "❌ Password is incorrect.";
     } else {
-      // Success
-      window.location.href = "../Landing Page/LandingPage.html";
+      // Success: store user data and login time (without password)
+      const userSession = {
+        email: user.email,
+        name: user.name, // or any other user info you want to keep
+        loginTime: Date.now(),
+        expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000, // 1 week from now
+      };
+      sessionStorage.setItem("userSession", JSON.stringify(userSession));
+      window.location.href = "/Landing Page/LandingPage.html";
     }
   } catch (error) {
     emailError.innerText = "⚠️ Error loading user data.";
   }
 }
+
+document.getElementById("logoutLink").addEventListener("click", function (e) {
+  e.preventDefault();
+  sessionStorage.clear();
+  localStorage.clear();
+  window.location.href = "/Login/Login.html";
+});

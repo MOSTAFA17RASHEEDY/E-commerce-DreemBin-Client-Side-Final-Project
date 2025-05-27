@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "username": "Mostafa Rasheedy",
+    "email": "mostafa@mail.com",
+    "password": "pass1"
+  },
+  {
+    "id": 2,
+    "username": "Omnya Ahmed",
+    "email": "omnyaahmed959@gmail.com",
+    "password": "pass2"
+  },
+  {
+    "id": 3,
+    "username": "Alaa Abdelhadi",
+    "email": "alaaabdelhadtzaky@gmail.com",
+    "password": "pass3"
+  },
+  {
+    "id": 4,
+    "username": "Aya Ashour",
+    "email": "gnatashour321@gmail.com",
+    "password": "pass4"
+  },
+  {
+    "id": 5,
+    "username": "Asmaa Ahmed",
+    "email": "asmaa@mail.com",
+    "password": "pass5"
+  }
+]

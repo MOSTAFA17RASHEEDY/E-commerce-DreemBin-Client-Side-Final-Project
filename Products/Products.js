@@ -1,6 +1,19 @@
+(function () {
+  // Allow access to login and 404 pages only without session
+  const allowedPages = ["/Login/Login.html", "/Shared/404.html"];
+  if (allowedPages.some((page) => window.location.pathname.endsWith(page)))
+    return;
+
+  const session = JSON.parse(sessionStorage.getItem("userSession") || "null");
+  if (!session || Date.now() > session.expiresAt) {
+    sessionStorage.removeItem("userSession");
+    window.location.href = "/Shared/404.html";
+  }
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
   let currentPage = 1;
-  const totalPages = 2; 
+  const totalPages = 2;
   const urlParams = new URLSearchParams(window.location.search);
   let currentCategory = urlParams.get("category")?.toLowerCase() || "all";
   let products = [];
@@ -14,17 +27,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const pagination = document.querySelector(".pagination");
   const shopTitle = document.querySelector("#shop h1");
 
-
   fetch(window.location.origin + "/Shared/JSON/Categories.json")
     .then((response) => response.json())
     .then((data) => {
       categories = data;
-      const validCategories = categories.map((category) => category.title.toLowerCase());
-      if (currentCategory !== "all" && !validCategories.includes(currentCategory)) {
-        currentCategory = "all"; 
+      const validCategories = categories.map((category) =>
+        category.title.toLowerCase()
+      );
+      if (
+        currentCategory !== "all" &&
+        !validCategories.includes(currentCategory)
+      ) {
+        currentCategory = "all";
       }
-        categoryButtons.forEach((button) => {
-        const buttonCategory = button.getAttribute("data-category")?.toLowerCase();
+      categoryButtons.forEach((button) => {
+        const buttonCategory = button
+          .getAttribute("data-category")
+          ?.toLowerCase();
         if (buttonCategory === currentCategory) {
           button.classList.add("active-category");
         } else {
@@ -62,8 +81,12 @@ document.addEventListener("DOMContentLoaded", function () {
     article.setAttribute("data-page", product.page);
 
     const priceHTML = product.discountedPrice
-      ? `<p><span class="original-price" style="text-decoration: line-through;">$${product.price.toFixed(2)} USD</span> 
-         <span class="price-discounted">$${product.discountedPrice.toFixed(2)} USD</span></p>`
+      ? `<p><span class="original-price" style="text-decoration: line-through;">$${product.price.toFixed(
+          2
+        )} USD</span> 
+         <span class="price-discounted">$${product.discountedPrice.toFixed(
+           2
+         )} USD</span></p>`
       : `<p>$${product.price.toFixed(2)} USD</p>`;
 
     article.innerHTML = `
@@ -85,8 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     products.forEach((product) => {
       const matchCategory =
-        currentCategory === "all" || product.category.toLowerCase() === currentCategory;
-      const matchPage = currentCategory === "all" ? product.page === currentPage : true;
+        currentCategory === "all" ||
+        product.category.toLowerCase() === currentCategory;
+      const matchPage =
+        currentCategory === "all" ? product.page === currentPage : true;
 
       if (matchCategory && matchPage) {
         const productElement = createProductElement(product);
@@ -97,19 +122,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedCategory = categories.find(
       (category) => category.title.toLowerCase() === currentCategory
     );
-    shopTitle.textContent = currentCategory === "all" ? "Shop" : selectedCategory?.title || "Shop";
+    shopTitle.textContent =
+      currentCategory === "all" ? "Shop" : selectedCategory?.title || "Shop";
 
-    pagination.style.display = currentCategory === "all" && totalPages > 1 ? "" : "none";
+    pagination.style.display =
+      currentCategory === "all" && totalPages > 1 ? "" : "none";
     pageIndicator.textContent = `${currentPage} / ${totalPages}`;
     prevBtn.style.display = currentPage === 1 ? "none" : "inline-block";
-    nextBtn.style.display = currentPage === totalPages ? "none" : "inline-block";
+    nextBtn.style.display =
+      currentPage === totalPages ? "none" : "inline-block";
   }
 
   categoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
       categoryButtons.forEach((btn) => btn.classList.remove("active-category"));
       button.classList.add("active-category");
-      currentCategory = button.getAttribute("data-category")?.toLowerCase() || "all";
+      currentCategory =
+        button.getAttribute("data-category")?.toLowerCase() || "all";
       currentPage = 1;
       updateProducts();
     });
