@@ -26,10 +26,9 @@ async function handleLogin(event) {
         email: user.email,
         name: user.name, // or any other user info you want to keep
         loginTime: Date.now(),
-        expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000, // 1 week from now
       };
       sessionStorage.setItem("userSession", JSON.stringify(userSession));
-      window.location.href = "/Landing Page/LandingPage.html";
+      window.location.href = "../Pages/Index.html";
     }
   } catch (error) {
     emailError.innerText = "⚠️ Error loading user data.";
@@ -40,5 +39,5 @@ document.getElementById("logoutLink").addEventListener("click", function (e) {
   e.preventDefault();
   sessionStorage.clear();
   localStorage.clear();
-  window.location.href = "/Login/Login.html";
+  window.location.href = "../Pages/Login.html";
 });

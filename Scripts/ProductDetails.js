@@ -1,16 +1,3 @@
-(function () {
-  // Allow access to login and 404 pages only without session
-  const allowedPages = ["/Login/Login.html", "/Shared/404.html"];
-  if (allowedPages.some((page) => window.location.pathname.endsWith(page)))
-    return;
-
-  const session = JSON.parse(sessionStorage.getItem("userSession") || "null");
-  if (!session || Date.now() > session.expiresAt) {
-    sessionStorage.removeItem("userSession");
-    window.location.href = "/Shared/404.html";
-  }
-})();
-
 function showProductDetails(productId) {
   fetch("/Shared/JSON/products.json")
     .then((response) => response.json())
@@ -19,12 +6,13 @@ function showProductDetails(productId) {
       if (product) {
         displayProductDetails(product);
       } else {
-        window.location.href = "/Products/All Products/AllProducts.html";
+        window.location.href = "../Pages/AllProducts.html";
       }
     });
 }
 
 function displayProductDetails(product) {
+  window.currentProductTitle = product.title;
   // Get cart from localStorage
   let cartItems = [];
   const savedCart = localStorage.getItem("cartItems");
@@ -99,6 +87,10 @@ function displayProductDetails(product) {
     const updatedItem = updatedCart.find((item) => item.name === product.title);
     cartProductCount.textContent = `${updatedItem ? updatedItem.quantity : 0}`;
   });
+  // After updating cartItems and localStorage
+  if (typeof refreshProductCount === "function" && window.currentProductTitle) {
+    refreshProductCount(window.currentProductTitle);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -107,6 +99,25 @@ document.addEventListener("DOMContentLoaded", () => {
   if (productId) {
     showProductDetails(productId);
   } else {
-    window.location.href = "/Products/All Products/AllProducts.html";
+    window.location.href = "../Pages/AllProducts.html";
+  }
+});
+
+function refreshProductCount(productTitle) {
+  const cartProductCount = document.getElementById("cartProductCount");
+  if (!cartProductCount) return;
+  let updatedCart = [];
+  const updatedSavedCart = localStorage.getItem("cartItems");
+  if (updatedSavedCart) {
+    updatedCart = JSON.parse(updatedSavedCart);
+  }
+  const updatedItem = updatedCart.find((item) => item.name === productTitle);
+  cartProductCount.textContent = `${updatedItem ? updatedItem.quantity : 0}`;
+}
+
+// Listen for cart changes in other tabs/windows and update the count
+window.addEventListener("storage", function (e) {
+  if (e.key === "cartItems" && window.currentProductTitle) {
+    refreshProductCount(window.currentProductTitle);
   }
 });

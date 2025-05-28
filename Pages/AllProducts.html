@@ -5,12 +5,11 @@
     <title>Shop</title>
     <link
       rel="icon"
-      href="/Shared/Images/dreambin-logo.svg"
+      href="../Shared/Images/dreambin-logo.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="/Products/ProductsStyle.css" />
-    <link rel="stylesheet" href="/Landing Page/LandingStyle.css" />
-    <script src="../Products.js"></script>
+    <link rel="stylesheet" href="../Styles/ProductsStyle.css" />
+    <link rel="stylesheet" href="../Styles/LandingStyle.css" />
   </head>
   <body>
     <nav id="TopNavBar" style="background-color: #b4ddff">
@@ -18,9 +17,9 @@
         <p>Exclusive Offer: Get 25% off Your First Purchase</p>
       </div>
       <div class="MainNav">
-        <a href="/Landing Page/LandingPage.html">
+        <a href="../Pages/Index.html">
           <img
-            src="/Shared/Images/dreambin-logo.svg"
+            src="../Shared/Images/dreambin-logo.svg"
             alt="DreamBin Logo"
             height="85"
           />
@@ -32,19 +31,19 @@
             <div id="searchDropdown" class="search-dropdown"></div>
             <hr />
             <ul>
-              <li><a href="/Landing Page/LandingPage.html">Home</a></li>
+              <li><a href="../Pages/Index.html">Home</a></li>
               <li>
-                <a href="/Products/All Products/AllProducts.html">Products</a>
+                <a href="../Pages/AllProducts.html">Products</a>
               </li>
               <li><a href="#Footer">Contact Us</a></li>
-              <li><a href="/Login/Login.html">Log Out</a></li>
+              <li><a href="../Pages/Login.html" id="logoutLink">Log Out</a></li>
             </ul>
           </div>
           <hr />
           <div class="Buttons">
             <button>
               <img
-                src="/Shared/Icons/search-icon.svg"
+                src="../Shared/Icons/search-icon.svg"
                 alt="Search Icon"
                 height="25"
               />
@@ -52,7 +51,7 @@
             <hr />
 
             <button onclick="toggleCart()">
-              <img src="/Shared/Icons/cart.svg" alt="Cart Icon" height="25" />
+              <img src="../Shared/Icons/cart.svg" alt="Cart Icon" height="25" />
 
               <span id="cartCount">0</span>
             </button>
@@ -97,7 +96,7 @@
     </div>
     <div class="shop-background-image">
       <img
-        src="/Shared/Images/65aa19740c834b38b1764b65_hero-inner-image.svg"
+        src="../Shared/Images/65aa19740c834b38b1764b65_hero-inner-image.svg"
         alt="background"
       />
     </div>
@@ -109,7 +108,8 @@
         <button class="buttonProduct" id="nextBtn">Next</button>
       </div>
     </main>
-    <script src="/Landing Page/LandingPage.js"></script>
-    <script src="../Products.js"></script>
+    <script src="../Scripts/LandingPage.js"></script>
+    <script src="../Scripts/Login.js"></script>
+    <script src="../Scripts/Products.js"></script>
   </body>
 </html>

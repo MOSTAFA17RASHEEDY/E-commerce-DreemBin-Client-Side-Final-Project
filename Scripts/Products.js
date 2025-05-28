@@ -1,16 +1,3 @@
-(function () {
-  // Allow access to login and 404 pages only without session
-  const allowedPages = ["/Login/Login.html", "/Shared/404.html"];
-  if (allowedPages.some((page) => window.location.pathname.endsWith(page)))
-    return;
-
-  const session = JSON.parse(sessionStorage.getItem("userSession") || "null");
-  if (!session || Date.now() > session.expiresAt) {
-    sessionStorage.removeItem("userSession");
-    window.location.href = "/Shared/404.html";
-  }
-})();
-
 document.addEventListener("DOMContentLoaded", function () {
   let currentPage = 1;
   const totalPages = 2;
@@ -92,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     article.innerHTML = `
       <div class="product-image-container">
         <img src="${product.image}" alt="${product.title}">
-        <a href="/Products/Product Details/ProductDetails.html?id=${product.id}" class="hover-button">View Details</a>
+        <a href="../Pages/ProductDetails.html?id=${product.id}" class="hover-button">View Details</a>
       </div>
       <h2 class="product-title">${product.title}</h2>
       <div class="product-price-wrap">
@@ -140,6 +127,14 @@ document.addEventListener("DOMContentLoaded", function () {
       currentCategory =
         button.getAttribute("data-category")?.toLowerCase() || "all";
       currentPage = 1;
+      // Update the URL parameter
+      const params = new URLSearchParams(window.location.search);
+      params.set("category", currentCategory);
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}?${params}`
+      );
       updateProducts();
     });
   });

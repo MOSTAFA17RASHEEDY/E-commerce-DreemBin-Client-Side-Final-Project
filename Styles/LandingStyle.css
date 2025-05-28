@@ -166,6 +166,13 @@ body {
   width: 90%;
   margin: auto;
 }
+#hamburger {
+  display: none;
+  font-size: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 /* cart style */
 
 .overlay {
@@ -409,28 +416,40 @@ body {
   left: 0px;
 }
 .StyleDivs2 {
-  position: absolute;
-  margin-right: 40px;
-  left: 550px;
-  bottom: -400px;
-  z-index: 1;
+  width: 40vw;
+  height: 300px;
+  position: relative;
 }
 .StyleDivs2 .ImgContanier {
+  position: absolute;
   width: 400px;
   height: 400px;
+  left: 10%;
+  top: -10%;
   border-radius: 50%;
+  background-color: #ffffe9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
 }
 .StyleDivs2 .ImgContanier img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 50%;
 }
 
-.StyleDivs2 span {
+.StyleDivs2 .ImgContanier span {
   position: absolute;
   left: -13%;
   top: -12%;
-  transform: rotate(0deg);
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
   animation: rotateAround 9s linear infinite;
   transition: all 3s ease-in-out;
 }
@@ -444,13 +463,13 @@ body {
   }
 }
 .StyleDivs2 span img {
-  border-radius: 50%;
 }
 .StyleDivs3 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-inline: 40px;
+  padding-inline: 30px;
+
   margin-top: 50px;
   flex-wrap: wrap;
   width: 450px;
@@ -645,10 +664,18 @@ body {
   object-fit: cover;
   border-radius: 10px;
 }
+#featured-product-circle {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 50px;
+}
 .ImgRoundedContanier {
-  position: absolute;
-  bottom: 100px;
-  left: 170px;
+  width: 500px;
+  height: 350px;
+}
+.ImgRoundedContanier img {
   animation: rotateAround 9s linear infinite;
   transition: all 3s ease-in-out;
 }
@@ -741,8 +768,8 @@ body {
   height: 600px; /* ارتفاع الصورة */
   border-radius: 15px;
   z-index: 9;
-  bottom: -500px;
-  left: 37%;
+  left: 25%;
+  top: -20%;
   border: 1px solid #444444; /* حدود للصورة */
 }
 .imgContainer img {
@@ -802,18 +829,26 @@ body {
   top: 49px;
   font-size: 18px;
 }
-.footerOfPage {
-  padding-top: 40%;
+.Footerheros {
+  position: relative;
+  width: 50%;
+  height: 500px;
 }
-
 .footerOfPage h2 {
   font-family: "RoseMadinaRegular";
   font-size: 2.5em;
-  margin-bottom: 40px;
+  margin-block: 40px;
   color: #171714;
 }
-
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50px;
+}
 .clients {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -968,4 +1003,293 @@ body {
 }
 .vibrate {
   animation: vibrate 0.4s;
+}
+
+/* ==== RESPONSIVE BREAKPOINTS ==== */
+/* Mobile: 320px - 768px */
+/* Tablet: 769px - 1024px */
+/* Desktop: 1025px+ */
+@media (max-width: 450px) {
+  /* Navbar */
+  #hamburger {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 0;
+    order: 1;
+  }
+  .MainNav {
+    align-items: center;
+    padding-inline: 20px;
+  }
+  #DreamBinLogo {
+    height: 40px;
+  }
+  .MainNav .RightPartOfNav {
+    align-items: center;
+    margin-right: 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  .RightPartOfNav .Lists {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+  .RightPartOfNav .Lists ul {
+    position: absolute;
+    top: 180%;
+    width: 90vw;
+    min-width: 90vw;
+    background: #ffffe9;
+    box-shadow: 1px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #00000036;
+    border-radius: 0 0 12px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1001;
+    display: none;
+    padding: 10px 0 10px 10px;
+    margin-right: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  .RightPartOfNav .Lists ul.show {
+    display: flex !important;
+  }
+  .RightPartOfNav .Lists input {
+    width: 100%;
+  }
+
+  .RightPartOfNav .Buttons {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .RightPartOfNav .Buttons button {
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #searchDropdown {
+    width: 90%;
+    max-width: none;
+    left: 0;
+    top: 50px;
+  }
+  .SearchBtn,
+  .RightPartOfNav .Buttons hr,
+  #hrBetweenListsAndBuutons,
+  .RightPartOfNav .Lists hr,
+  #TopNav {
+    display: none;
+  }
+  /* Hero Section */
+  .ExploreSection {
+    padding-bottom: 450px;
+  }
+  .ExploreDetails {
+    padding-inline: 20px;
+  }
+  .ExploreDetails h1 {
+    font-size: 30px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .ExploreDetails p {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  .StyleDivs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+    flex-direction: column;
+  }
+  .StyleDivs1 {
+    width: 300px;
+    margin-bottom: 70px;
+    margin-right: 0;
+    margin-top: 50px;
+    height: 400px;
+  }
+  .StyleDivs2 {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .StyleDivs2 .ImgContanier {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    top: 0;
+    left: 0;
+  }
+  .StyleDivs2 .ImgContanier span img {
+  }
+  .StyleDivs2 .ImgContanier span {
+    position: absolute;
+    left: -25px;
+    top: -25px;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 35;
+  }
+  .StyleDivs3 {
+    display: flex;
+    margin-block: 50px;
+    margin-left: 20px;
+    justify-content: center;
+  }
+  .Flower,
+  .FlowerLeft {
+    display: none;
+  }
+  /* Shop By Category Section */
+
+  .CategoryWave {
+    top: -25px;
+  }
+  .ShopByCategoryContent h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+  .ShopByCategoryContent ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ShopByCategoryContent ul li {
+    height: 400px;
+    width: 400px;
+  }
+  .ShopByCategoryContent ul li .ImgContanier {
+    width: 350px;
+    height: 350px;
+  }
+  .ShopByCategoryContent ul li h3 {
+    font-size: 20px;
+  }
+  #EndWaveForFPS {
+    position: absolute;
+    top: -55px;
+  }
+  /* Featured Products Section */
+  .FeaturedProductsSection h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+  .FeaturedProductsSection ul {
+    direction: ltr;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .FeaturedProductsSection ul li {
+    direction: ltr;
+    width: 380px;
+    height: 300px;
+    margin-bottom: 30px;
+    margin-left: 0;
+  }
+  .ProductContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ProductImgContainer {
+    width: 350px;
+    height: 200px;
+  }
+  .ImgRoundedContanier {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    margin: auto;
+  }
+  .ImgRoundedContanier img {
+    width: 90%;
+    height: 90%;
+  }
+  .wiv1Contanier img {
+    top: -20px;
+  }
+
+  /* About Section */
+  .AboutHeader {
+    width: 100%;
+  }
+  .AboutHeader h1 {
+    font-size: 1.3rem;
+    margin-top: 10px;
+  }
+  .AboutVectorRight,
+  .AboutVectorLeft,
+  .stat,
+  .stat2,
+  .divider {
+    display: none;
+  }
+  .footerOfPage svg {
+    top: -55px;
+  }
+  .Footerheros {
+    width: 100%;
+  }
+  .Footerheros .imgContainer {
+    width: 300px;
+    height: 500px;
+    top: 0%;
+    left: 12%;
+  }
+  .AboutButton {
+    text-decoration: none;
+    padding-top: 15px;
+  }
+  .footerOfPage h2 {
+    font-size: 1.5rem;
+  }
+  .clients {
+    width: 90%;
+  }
+
+  /* Footer section */
+  .SvgContainer img {
+    top: -30px;
+  }
+  .FooterVector,
+  .FooterVector2 {
+    display: none;
+  }
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+    padding-left: 0;
+  }
+  .Title h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .grid-container .column ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

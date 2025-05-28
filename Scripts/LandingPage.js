@@ -1,16 +1,3 @@
-(function () {
-  // Allow access to login and 404 pages only without session
-  const allowedPages = ["/Login/Login.html", "/Shared/404.html"];
-  if (allowedPages.some((page) => window.location.pathname.endsWith(page)))
-    return;
-
-  const session = JSON.parse(sessionStorage.getItem("userSession") || "null");
-  if (!session || Date.now() > session.expiresAt) {
-    sessionStorage.removeItem("userSession");
-    window.location.href = "/Shared/404.html";
-  }
-})();
-
 let allProducts = [];
 
 // Fetch products ONCE and use for both best sellers and search
@@ -22,11 +9,11 @@ fetch("/Shared/JSON/products.json")
     // Featured products (Best Sellers)
     const bestSellers = allProducts.filter((product) => product.BestSell);
     const ul = document.getElementById("featured-products-list");
-    ul.innerHTML = "";
+
     bestSellers.forEach((product) => {
       const li = document.createElement("li");
       li.innerHTML = `
-        <a class="ProductContainer" href="/Products/Product Details/ProductDetails.html?id=${
+        <a class="ProductContainer" href="../Pages/ProductDetails.html?id=${
           product.id
         }" class="hover-button" style="display:block;text-decoration:none; color:inherit;">
           <button>Shop Now</button>
@@ -60,7 +47,7 @@ fetch("/Shared/JSON/Categories.json")
       `;
       li.style.cursor = "pointer";
       li.addEventListener("click", () => {
-        window.location.href = `../Products/All Products/AllProducts.html?category=${encodeURIComponent(
+        window.location.href = `../Pages/AllProducts.html?category=${encodeURIComponent(
           category.title.toLowerCase()
         )}`;
       });
@@ -94,7 +81,7 @@ function renderDropdown(items, message = "") {
       const div = document.createElement("div");
       div.className = "search-item";
       div.innerHTML = `
-      <a href="../Products/Product Details/ProductDetails.html?id=${product.id}"  style="display:block;text-decoration:none; color:inherit; display:flex; align-items:center;">
+      <a href="../Pages/ProductDetails.html?id=${product.id}"  style="display:block;text-decoration:none; color:inherit; display:flex; align-items:center;">
         <img src="${product.image}" alt="${product.title}" />
         <span>${product.title}</span>
         </a>
@@ -170,6 +157,13 @@ function toggleCart() {
 
 // Add vibration when product is added
 function addToCart(name, price, image) {
+  // Check if user is logged in
+  const session = JSON.parse(sessionStorage.getItem("userSession") || "null");
+  if (!session) {
+    showTopMessage("You must log in first!");
+    return;
+  }
+
   const existingItem = cartItems.find((item) => item.name === name);
   if (existingItem) {
     existingItem.quantity += 1;
@@ -177,7 +171,10 @@ function addToCart(name, price, image) {
     cartItems.push({ name, price, quantity: 1, image });
   }
   renderCart();
-  localStorage.setItem("cartItems", JSON.stringify(cartItems)); // Save to localStorage
+  if (typeof refreshProductCount === "function" && window.currentProductTitle) {
+    refreshProductCount(window.currentProductTitle);
+  }
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
   // Vibrate animation
   const cartCount = document.getElementById("cartCount");
@@ -194,12 +191,18 @@ function updateQuantity(index, quantity) {
     cartItems.splice(index, 1);
   }
   renderCart();
+  if (typeof refreshProductCount === "function" && window.currentProductTitle) {
+    refreshProductCount(window.currentProductTitle);
+  }
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
 function removeItem(index) {
   cartItems.splice(index, 1);
   renderCart();
+  if (typeof refreshProductCount === "function" && window.currentProductTitle) {
+    refreshProductCount(window.currentProductTitle);
+  }
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
@@ -249,9 +252,6 @@ function renderCart() {
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
-// Clear cart on page load
-// cartItems = [];
-// localStorage.removeItem("cartItems");
 renderCart();
 
 function handleCheckout() {
@@ -276,6 +276,9 @@ function handleCheckout() {
   localStorage.setItem("orders", JSON.stringify(orders));
   cartItems = [];
   renderCart();
+  if (typeof refreshProductCount === "function" && window.currentProductTitle) {
+    refreshProductCount(window.currentProductTitle);
+  }
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
   showCartMessage("Your order has been placed!");
@@ -302,4 +305,66 @@ function showCartMessage(msg) {
   setTimeout(() => {
     if (msgDiv.parentNode) msgDiv.parentNode.removeChild(msgDiv);
   }, 3000);
+}
+
+function showTopMessage(msg) {
+  // Remove any existing message
+  const oldMsg = document.getElementById("top-login-msg");
+  if (oldMsg) oldMsg.remove();
+
+  const msgDiv = document.createElement("div");
+  msgDiv.textContent = msg;
+  msgDiv.id = "top-login-msg";
+  msgDiv.style.cssText = `
+    position: fixed;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #b4ddff;
+    color: #222;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    z-index: 2000;
+    transition: top 0.4s cubic-bezier(.4,2,.6,1);
+  `;
+  document.body.appendChild(msgDiv);
+
+  // Animate drop down
+  setTimeout(() => {
+    msgDiv.style.top = "20px";
+  }, 10);
+
+  // Remove after 3 seconds
+  setTimeout(() => {
+    msgDiv.style.top = "-60px";
+    setTimeout(() => {
+      if (msgDiv.parentNode) msgDiv.parentNode.removeChild(msgDiv);
+    }, 400);
+  }, 3000);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const logoutLink = document.getElementById("logoutLink");
+  const session = JSON.parse(sessionStorage.getItem("userSession") || "null");
+  if (!session) {
+    logoutLink.textContent = "Log In";
+    logoutLink.href = "/Login/Login.html";
+  } else {
+    logoutLink.textContent = "Log Out";
+    logoutLink.href = "../Pages/Login.html";
+    logoutLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      sessionStorage.clear();
+      localStorage.clear();
+      window.location.href = "../Pages/Login.html";
+    });
+  }
+});
+function toggleMenu() {
+  const navList = document.querySelector(".RightPartOfNav .Lists ul");
+  navList.style.display = navList.style.display === "none" ? "flex" : "none";
 }
