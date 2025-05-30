@@ -28,7 +28,7 @@ async function handleLogin(event) {
         loginTime: Date.now(),
       };
       sessionStorage.setItem("userSession", JSON.stringify(userSession));
-      window.location.href = "../Pages/Index.html";
+      window.location.href = "../Index.html";
     }
   } catch (error) {
     emailError.innerText = "⚠️ Error loading user data.";
