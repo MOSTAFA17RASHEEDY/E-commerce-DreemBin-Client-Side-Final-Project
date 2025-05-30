@@ -1150,6 +1150,7 @@ body {
     margin-block: 50px;
     margin-left: 20px;
     justify-content: center;
+    width: 100%;
   }
   .Flower,
   .FlowerLeft {
