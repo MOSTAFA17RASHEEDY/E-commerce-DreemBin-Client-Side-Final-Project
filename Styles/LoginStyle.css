@@ -8,49 +8,84 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
+
 body {
   font-family: "RoseMadina", sans-serif;
   display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 
+/* Default layout for Login page (image left, form right) */
 .left-panel {
   width: 35%;
   background: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .left-panel img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .right-panel {
-  width: 50%;
+  width: 65%;
   padding: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: #ffffff;
+}
+
+/* Specific layout for Register page (form left, image right) */
+body:has(#registerPanel) {
+  flex-direction: row; /* Ensure form is left, image is right */
+}
+
+body:has(#registerPanel) .right-panel {
+  order: -1; /* Place form panel before image panel */
+  width: 60%;
+}
+
+body:has(#registerPanel) .left-panel {
+  width: 40%;
 }
 
 h2 {
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: 600;
+  text-align: center;
+  color: #333;
 }
 
+input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   margin: 10px 0;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  font-size: 14px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #b19ddf;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(177, 157, 223, 0.1);
 }
 
 .forgot-password {
@@ -62,20 +97,23 @@ input[type="password"] {
 }
 
 .login-btn {
-  background-color: #b19ddf;
+  background: #b19ddf;
   color: black;
-  padding: 12px;
+  padding: 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   width: 100%;
   font-size: 16px;
+  font-weight: 600;
   margin-top: 30px;
+  transition: all 0.3s ease;
 }
 
 .login-btn:hover {
-  background-color: #b4ddff;
-  transition: background-color 0.3s ease-in-out;
+  background: linear-gradient(135deg, #b4ddff 0%, #b19ddf 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(177, 157, 223, 0.3);
 }
 
 .or-divider {
@@ -91,7 +129,7 @@ input[type="password"] {
   text-align: center;
   font-size: 14px;
   color: #333;
-  margin-top: 57px;
+  margin-top: 30px;
 }
 
 .signup-link a {
@@ -100,9 +138,12 @@ input[type="password"] {
   text-decoration: none;
   font-weight: 600;
   text-decoration: underline;
+  transition: all 0.3s ease;
 }
+
 .signup-link a:hover {
   text-decoration: none;
+  color: #9575cd;
 }
 
 #message.error {
@@ -113,26 +154,81 @@ input[type="password"] {
 
 .error-message {
   font-family: "Archivo", sans-serif;
-  color: red;
-
+  color: #e74c3c;
   margin-top: 5px;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 14px;
+  min-height: 20px;
 }
-/* ==== RESPONSIVE BREAKPOINTS ==== */
-/* Mobile: 320px - 768px */
-/* Tablet: 769px - 1024px */
-/* Desktop: 1025px+ */
+
+/* Success messages */
+.success-message {
+  font-family: "Archivo", sans-serif;
+  color: #27ae60;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Enhanced form styling */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Loading state for buttons */
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive: stack panels on mobile */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100% !important;
+    height: 50%;
+  }
+
+  .right-panel {
+    padding: 30px !important;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  body:has(#registerPanel) .right-panel {
+    order: 0; /* Reset order for mobile stacking */
+  }
+}
+
 @media (max-width: 450px) {
   .left-panel {
-    display: none;
+    display: none; /* Hide image panel on mobile */
   }
+
   .right-panel {
-    width: 100%;
+    width: 100% !important;
+    height: 100vh;
+    padding: 30px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
   }
+
+  input[type="text"],
   input[type="email"],
   input[type="password"] {
-    width: 90%;
-    margin: 10px auto;
+    padding: 12px;
+    font-size: 14px;
   }
 }

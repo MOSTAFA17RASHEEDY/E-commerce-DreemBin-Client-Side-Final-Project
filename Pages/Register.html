@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="../Styles/LoginStyle.css" />
+  </head>
+  <body>
+    <div class="right-panel" id="registerPanel">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <input type="text" id="regUsername" placeholder="Username" required />
+        <div class="error-message" id="regUsernameError"></div>
+        <input type="email" id="regEmail" placeholder="Email" required />
+        <div class="error-message" id="regEmailError"></div>
+        <input
+          type="password"
+          id="regPassword"
+          placeholder="Password"
+          required
+        />
+        <div class="error-message" id="regPasswordError"></div>
+        <input
+          type="password"
+          id="regConfirmPassword"
+          placeholder="Confirm Password"
+          required
+        />
+        <div class="error-message" id="regConfirmPasswordError"></div>
+        <button type="submit" class="login-btn">Register</button>
+        <div id="regMessage"></div>
+      </form>
+      <div class="signup-link">
+        Already have an account? <a href="Login.html" id="showLogin">Log In</a>
+      </div>
+    </div>
+    <div class="left-panel" id="registerImagePanel">
+      <img src="../Shared/Images/loginPhoto.png" alt="Login Image" />
+    </div>
+    <script src="../Scripts/Login.js"></script>
+  </body>
+</html>
