@@ -218,6 +218,7 @@ body {
 .AboutButton {
   font-size: clamp(0.875rem, 2vw, 1rem);
   padding: 0.625rem 1.25rem;
+  text-decoration: none;
 }
 
 .imgContainer {
@@ -235,7 +236,8 @@ body {
   flex-wrap: wrap;
 }
 
-.stat, .stat2 {
+.stat,
+.stat2 {
   font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
@@ -294,7 +296,8 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .StyleDivs1, .StyleDivs2 .ImgContanier,
+  .StyleDivs1,
+  .StyleDivs2 .ImgContanier,
   .ProductImgContainer,
   .ShopByCategoryContent ul li .ImgContanier {
     width: 100%;

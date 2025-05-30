@@ -738,14 +738,15 @@ body {
 .AboutButton {
   background-color: #b19ddf;
   border: 1px solid black;
-  padding: 10px 20px;
+  padding: 20px 20px;
   color: black;
   font-size: 1em;
-  height: 50px;
   cursor: pointer;
   border-radius: 12px;
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-bottom: 50px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .AboutButton:hover {
@@ -1132,8 +1133,7 @@ body {
     top: 0;
     left: 0;
   }
-  .StyleDivs2 .ImgContanier span img {
-  }
+
   .StyleDivs2 .ImgContanier span {
     position: absolute;
     left: -25px;

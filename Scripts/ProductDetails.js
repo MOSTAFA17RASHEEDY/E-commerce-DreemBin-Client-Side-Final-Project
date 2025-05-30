@@ -6,7 +6,7 @@ function showProductDetails(productId) {
       if (product) {
         displayProductDetails(product);
       } else {
-        window.location.href = "../Pages/AllProducts.html";
+        window.location.href = "../Pages/404.html"; // Redirect to 404 if not found
       }
     });
 }
